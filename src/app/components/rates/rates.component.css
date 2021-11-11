@@ -28,3 +28,15 @@
   background-color: #fbb335;
   color: #305496;
 }
+
+.btn-secondary {
+  background-color: transparent;
+  color: #305496;
+  width: 450px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.sub-headings {
+  color: #fbb335;
+}
