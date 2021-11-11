@@ -19,17 +19,16 @@
 }
 
 .main-card-body {
-  min-height: 100vh;
   background-color: #effbfb;
 }
+
 /* common style */
 
-/* other */
-.claimant-project-cards {
-  min-width: 610px;
+.h5-heading {
+  text-transform: uppercase;
+  color: #fbb335;
 }
 
-.con-event-other {
-  min-width: 400px;
-  min-height: 245px;
+.col {
+  padding: 5px 150px 5px 5px;
 }

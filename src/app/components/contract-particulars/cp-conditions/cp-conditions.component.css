@@ -1,0 +1,13 @@
+.col {
+  padding: 5px 100px 5px 10px;
+}
+
+.btn-secondary {
+  background-color: #fbb335;
+  color: #305496;
+  margin: 30px 100px 0px 0px;
+}
+
+.textarea {
+  margin-right: 100px;
+}

@@ -24,12 +24,7 @@
 }
 /* common style */
 
-/* other */
-.claimant-project-cards {
-  min-width: 610px;
-}
-
-.con-event-other {
-  min-width: 400px;
-  min-height: 245px;
+.btn-secondary {
+  background-color: #fbb335;
+  color: #305496;
 }
