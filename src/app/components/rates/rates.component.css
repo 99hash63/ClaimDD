@@ -23,3 +23,8 @@
   background-color: #effbfb;
 }
 /* common style */
+
+.btn-primary {
+  background-color: #fbb335;
+  color: #305496;
+}
