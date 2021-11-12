@@ -19,53 +19,17 @@
 }
 
 .main-card-body {
+  min-height: 100vh;
   background-color: #effbfb;
 }
 /* common style */
 
-/* other */
-.claimant-project-cards {
-  min-width: 610px;
-}
-
-.con-event-other {
-  min-width: 400px;
-  min-height: 245px;
-}
-
-.set-inputs {
-  margin-right: 16px;
-  margin-left: 20px;
-}
-
-.card-header-h5 {
-  color: #fbb335;
-}
-
-.card {
-  border-radius: 25px;
-}
-
-/* next button */
 .btn-secondary {
   background-color: #fbb335;
   color: #305496;
-  margin: 15px 16px 0px 0px;
 }
 
-.btn-secondary:hover,
-.btn-secondary:active,
-.btn-secondary:focus {
+.btn-secondary:hover {
   background-color: #305496 !important;
   color: #fbb335 !important;
-  margin: 15px 16px 0px 0px;
-}
-
-/* icon styles */
-.edit-icon {
-  color: green;
-}
-
-.delete-icon {
-  color: red;
 }

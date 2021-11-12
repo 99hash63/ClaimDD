@@ -1,0 +1,23 @@
+<div class="main-card card">
+  <div class="white-line" style="z-index: 2;">
+  </div>
+  <div class=" main-card-heading" style="z-index: 2;">
+    <div style=" display: inline"></div>
+    <h5 class=" card-header">Contract Particular</h5>
+  </div>
+  <div class="main-card-body card-body">
+    <!-- body elements -->
+    <div class="conainer" style="margin-top: 20px;">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="onTabClick(0)">Original Contract</button>
+        <button type="button" class="btn btn-secondary" (click)="onTabClick(1)">Condition of Contract</button>
+        <button type="button" class="btn btn-secondary" (click)="onTabClick(2)">Contract Amendment</button>
+      </div>
+
+      <app-cp-original *ngIf="tabIndex === 0"></app-cp-original>
+      <app-cp-conditions *ngIf="tabIndex === 1"></app-cp-conditions>
+      <app-cp-amendment *ngIf="tabIndex === 2"></app-cp-amendment>
+
+    </div>
+  </div>
+</div>

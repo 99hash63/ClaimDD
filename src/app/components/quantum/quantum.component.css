@@ -1,0 +1,79 @@
+/* common style */
+.main-card {
+  border: none;
+}
+.white-line {
+  background-color: white;
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  height: 10px;
+}
+.main-card-heading {
+  color: white;
+  text-transform: uppercase;
+  background-color: #305496;
+  position: sticky;
+  top: 110px;
+  width: 100%;
+}
+
+.main-card-body {
+  min-height: 100vh;
+  background-color: #effbfb;
+}
+/* common style */
+
+/* other */
+.sub-headings {
+  color: #fbb335;
+}
+/* top buttons */
+.btn-info {
+  background-color: #fbb335;
+  color: #305496;
+  padding: 5px 40px 5px 40px;
+}
+
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+}
+
+/* list buttons */
+.btn-primary {
+  background-color: transparent;
+  border-color: #305496;
+  color: #305496;
+  width: 100%;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* list buttons */
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: white !important;
+  border-color: #305496 !important;
+  color: #305496 !important;
+  width: 100%;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* next button */
+.btn-secondary {
+  background-color: #fbb335;
+  color: #305496;
+  margin: 40px 12px 0px 0px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+}

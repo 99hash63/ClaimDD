@@ -21,36 +21,23 @@
 .main-card-body {
   background-color: #effbfb;
 }
+
 /* common style */
 
-/* other */
-.claimant-project-cards {
-  min-width: 610px;
-}
-
-.con-event-other {
-  min-width: 400px;
-  min-height: 245px;
-}
-
-.set-inputs {
-  margin-right: 16px;
-  margin-left: 20px;
-}
-
-.card-header-h5 {
+.h5-heading {
+  text-transform: uppercase;
   color: #fbb335;
 }
 
-.card {
-  border-radius: 25px;
+.col {
+  padding: 5px 150px 5px 5px;
 }
 
 /* next button */
 .btn-secondary {
   background-color: #fbb335;
   color: #305496;
-  margin: 15px 16px 0px 0px;
+  margin: 15px 140px 0px 0px;
 }
 
 .btn-secondary:hover,
@@ -58,14 +45,5 @@
 .btn-secondary:focus {
   background-color: #305496 !important;
   color: #fbb335 !important;
-  margin: 15px 16px 0px 0px;
-}
-
-/* icon styles */
-.edit-icon {
-  color: green;
-}
-
-.delete-icon {
-  color: red;
+  margin: 15px 140px 0px 0px;
 }

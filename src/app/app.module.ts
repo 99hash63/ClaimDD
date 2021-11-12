@@ -8,6 +8,18 @@ import { WAheaderComponent } from './components/waheader/waheader.component';
 import { WAfooterComponent } from './components/wafooter/wafooter.component';
 import { WASidenavComponent } from './components/wasidenav/wasidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ContractParticularsComponent } from './components/contract-particulars/contract-particulars.component';
+import { FinancialParticularsComponent } from './components/financial-particulars/financial-particulars.component';
+import { EventsComponent } from './components/events/events.component';
+import { RatesComponent } from './components/rates/rates.component';
+import { QuantumComponent } from './components/quantum/quantum.component';
+import { EvaluationComponent } from './components/evaluation/evaluation.component';
+import { ClaimComponent } from './components/claim/claim.component';
+import { ReportComponent } from './components/report/report.component';
+import { ContemporaryRecordsComponent } from './components/contemporary-records/contemporary-records.component';
+import { CpOriginalComponent } from './components/contract-particulars/cp-original/cp-original.component';
+import { CpAmendmentComponent } from './components/contract-particulars/cp-amendment/cp-amendment.component';
+import { CpConditionsComponent } from './components/contract-particulars/cp-conditions/cp-conditions.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +28,18 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     WAfooterComponent,
     WASidenavComponent,
     DashboardComponent,
+    ContractParticularsComponent,
+    FinancialParticularsComponent,
+    EventsComponent,
+    RatesComponent,
+    QuantumComponent,
+    EvaluationComponent,
+    ClaimComponent,
+    ReportComponent,
+    ContemporaryRecordsComponent,
+    CpOriginalComponent,
+    CpAmendmentComponent,
+    CpConditionsComponent,
   ],
   imports: [
     BrowserModule,
