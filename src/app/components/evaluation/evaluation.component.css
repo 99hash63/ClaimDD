@@ -19,7 +19,40 @@
 }
 
 .main-card-body {
-  min-height: 100vh;
   background-color: #effbfb;
 }
+
 /* common style */
+
+.h5-heading {
+  text-transform: uppercase;
+  color: #fbb335;
+}
+
+.col {
+  padding: 5px 150px 5px 5px;
+}
+
+/* evaluate button */
+.btn-secondary {
+  background-color: #fbb335;
+  color: #305496;
+  width: 100%;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+}
+
+.form-check {
+  min-width: 200px;
+  margin: 10px 150px 20px 0px;
+}
+
+.form-check-input {
+  width: 30px;
+  height: 30px;
+}

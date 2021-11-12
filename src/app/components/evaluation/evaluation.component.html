@@ -1,12 +1,108 @@
 <div class="main-card card">
-  <div class="white-line">
+  <div class="white-line" style="z-index: 2;">
   </div>
-  <div class=" main-card-heading">
+  <div class=" main-card-heading" style="z-index: 2;">
     <div style=" display: inline"></div>
-    <h5 class=" card-header">Evaluation</h5>
+    <h5 class="h5-heading" class=" card-header">Evaluation</h5>
   </div>
   <div class="main-card-body card-body">
     <!-- body elements -->
-    <h6>evaluation page</h6>
+    <!-- overhead and profit -->
+    <h5 class="h5-heading">Event</h5>
+    <div style="margin-right: 380px;">
+      <form>
+        <div class="form-group">
+          <label for="inputEmail4">Select an Event to Evaluate</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Event 1</option>
+            <option>Event 2</option>
+            <option>Event 3</option>
+            <option>Event 4</option>
+            <option>Event 5</option>
+            <option>Event 6</option>
+          </select>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <h5 class="h5-heading">claims heading</h5>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">Site Preliminaries</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">Loss of Productivity</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">De-moblisation</label>
+          </div> <br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Re-moblisation</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Escalation - Material</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Escalation - Labour</label>
+          </div><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Subcontractor's Claims</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Damages</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Head Office Overheads</label>
+          </div><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Profit on Claim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Loss of Profit</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Financiaal Charge on Delayed Profit</label>
+          </div> <br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Financiaal Charge (Interest) on Unsettled
+              Payment</label>
+          </div>
+
+
+        </div>
+        <div class="form-group">
+          <label for="inputEmail4">Select applicable formula</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Event 1</option>
+            <option>Event 2</option>
+            <option>Event 3</option>
+            <option>Event 4</option>
+            <option>Event 5</option>
+            <option>Event 6</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail4">As Other is selected, specify per day amount in currency</label>
+          <input type="number" class="form-control" placeholder="Head Office Overhead Cost">
+          <input type="number" class="form-control" placeholder="Loss of Profit amount per day"
+            style="margin-top: 10PX;">
+        </div>
+      </form><br>
+      <button type="submit" class="btn btn-secondary ">EVALUATE</button>
+
+    </div>
+
   </div>
 </div>
