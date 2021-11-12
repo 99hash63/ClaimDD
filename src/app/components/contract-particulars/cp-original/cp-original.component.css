@@ -4,6 +4,15 @@
 
 .btn-secondary {
   background-color: #fbb335;
-  color: #305496;
-  margin: 30px 100px 0px 0px;
+  color: rgb(48, 84, 150);
+  position: relative;
+  margin: 30px 90px 0px 0px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+  margin: 30px 90px 0px 0px;
 }

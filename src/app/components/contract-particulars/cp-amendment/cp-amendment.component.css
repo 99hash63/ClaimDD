@@ -5,5 +5,14 @@
 .btn-secondary {
   background-color: #fbb335;
   color: #305496;
-  margin: 30px 100px 0px 0px;
+  position: relative;
+  margin: 110px 90px 0px 0px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+  margin: 110px 90px 0px 0px;
 }

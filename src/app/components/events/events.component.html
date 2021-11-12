@@ -7,7 +7,7 @@
   </div>
   <div class="main-card-body card-body">
     <!-- body elements -->
-    <div class="container ">
+    <!-- <div class="container ">
       <div class="row " style="float: center;">
         <div class="col-sm ">
           <button type="button" class="btn btn-primary btn-mg">ADD EVENTS</button>
@@ -23,11 +23,22 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
 
-    <div class="container" style="margin-top: 25px;">
+    <div style="padding: 20px;">
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm">
+          <button type="button" class="btn btn-primary btn" style="color: #fbb335; background-color: #305496;">Add
+            Events&nbsp;
+            <i i-bs name="plus-circle"></i></button>
+        </div>
+        <div class="col-sm" style="text-align: right;">
+          <button type="button" class="btn btn-primary btn" style="color: #305496; background-color: #fbb335;">Export
+          </button>
+        </div>
+      </div>
       <table class=" table table-bordered" style="background-color: white;">
-        <thead>
+        <thead style="color: #305496;">
           <tr>
             <th scope="col">Event ID</th>
             <th scope="col">Event Description</th>
@@ -42,6 +53,7 @@
             <th scope="col">Actual Earned Value at End in Currency</th>
             <th scope="col">Cost Claimable</th>
             <th scope="col">Time Claim Reference</th>
+            <th></th>
 
           </tr>
         </thead>
@@ -60,6 +72,9 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
+            <td style="min-width: 70px;"> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;&nbsp;&nbsp;
+              <i i-bs name="archive-fill" class="delete-icon"></i>
+            </td>
           </tr>
           <tr>
             <th scope="row">2</th>
@@ -75,6 +90,9 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
+            <td style="min-width: 70px;"> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;&nbsp;&nbsp;
+              <i i-bs name="archive-fill" class="delete-icon"></i>
+            </td>
           </tr>
           <tr>
             <th scope="row">3</th>
@@ -90,9 +108,15 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
+            <td style="min-width: 70px;"> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;&nbsp;&nbsp;
+              <i i-bs name="archive-fill" class="delete-icon"></i>
+            </td>
           </tr>
         </tbody>
       </table>
+      <button type="submit" class="btn btn-secondary float-right">Next</button>
+
     </div>
+
   </div>
 </div>

@@ -28,3 +28,36 @@
   background-color: #fbb335;
   color: #305496;
 }
+
+th {
+  font-size: 12px;
+}
+
+td {
+  font-size: 12px;
+  float: top;
+}
+
+/* next button */
+.btn-secondary {
+  background-color: #fbb335;
+  color: #305496;
+  margin: 7px 0px 0px 0px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+  margin: 7px 0px 0px 0px;
+}
+
+/* icon styles */
+.edit-icon {
+  color: green;
+}
+
+.delete-icon {
+  color: red;
+}

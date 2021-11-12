@@ -28,3 +28,8 @@
   background-color: #fbb335;
   color: #305496;
 }
+
+.btn-secondary:hover {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+}
