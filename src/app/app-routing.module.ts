@@ -10,10 +10,11 @@ import { EvaluationComponent } from './components/evaluation/evaluation.componen
 import { ClaimComponent } from './components/claim/claim.component';
 import { ReportComponent } from './components/report/report.component';
 import { ContemporaryRecordsComponent } from './components/contemporary-records/contemporary-records.component';
+import { RatePreviewComponent } from './components/rates/rate-preview/rate-preview.component';
 
 const routes: Routes = [
   {
-    path: 'get-started',
+    path: '',
     component: DashboardComponent,
     pathMatch: 'full',
   },
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'contemporary-records',
     component: ContemporaryRecordsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'rate-preview',
+    component: RatePreviewComponent,
     pathMatch: 'full',
   },
 ];

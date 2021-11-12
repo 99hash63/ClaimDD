@@ -20,6 +20,7 @@ import { ContemporaryRecordsComponent } from './components/contemporary-records/
 import { CpOriginalComponent } from './components/contract-particulars/cp-original/cp-original.component';
 import { CpAmendmentComponent } from './components/contract-particulars/cp-amendment/cp-amendment.component';
 import { CpConditionsComponent } from './components/contract-particulars/cp-conditions/cp-conditions.component';
+import { RatePreviewComponent } from './components/rates/rate-preview/rate-preview.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CpConditionsComponent } from './components/contract-particulars/cp-cond
     CpOriginalComponent,
     CpAmendmentComponent,
     CpConditionsComponent,
+    RatePreviewComponent,
   ],
   imports: [
     BrowserModule,
