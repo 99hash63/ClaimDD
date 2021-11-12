@@ -1,4 +1,15 @@
 .wafooter {
   background-color: #305496;
   height: 75px;
+  margin-left: 200px;
+  color: #fbb335;
+  font-size: 13px;
+}
+
+.row {
+  padding-top: 25px;
+}
+
+.col {
+  text-align: center;
 }
