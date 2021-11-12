@@ -47,3 +47,8 @@
   color: #fbb335 !important;
   margin: 15px 140px 0px 0px;
 }
+
+.h6-audit {
+  color: #305496;
+  text-decoration: underline;
+}
