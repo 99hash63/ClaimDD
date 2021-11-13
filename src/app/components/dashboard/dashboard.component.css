@@ -25,7 +25,9 @@
 
 /* other */
 .claimant-project-cards {
-  min-width: 610px;
+  min-width: 550px;
+
+  max-width: 610px;
 }
 
 .con-event-other {
