@@ -16,3 +16,9 @@
   color: #fbb335 !important;
   margin: 110px 90px 0px 0px;
 }
+
+.h5-heading {
+  text-transform: uppercase;
+  color: #fbb335;
+  margin: 0px 0px 0px 5px;
+}

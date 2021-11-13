@@ -61,3 +61,7 @@ td {
 .delete-icon {
   color: red;
 }
+
+td {
+  background-color: white;
+}
