@@ -3,6 +3,18 @@
   height: 100px;
 }
 
-h6 {
+.top-row {
+  padding-top: 20px;
+  color: white;
+}
+
+.bottom-row {
+  padding-top: 10px;
+  color: white;
+}
+
+.userName {
+  padding-top: 35px;
+  padding-right: 40px;
   color: white;
 }
