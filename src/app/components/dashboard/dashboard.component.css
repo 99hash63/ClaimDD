@@ -38,7 +38,7 @@
 
 .set-inputs {
   /* margin-right: 56px; */
-  max-width: 315px;
+  max-width: 322px;
   margin-left: 20px;
 }
 
@@ -87,7 +87,7 @@
 .btn-secondary {
   background-color: #fbb335;
   color: #305496;
-  margin: 15px 140px 0px 0px;
+  margin: 15px 135px 0px 0px;
 }
 
 .btn-secondary:hover,
@@ -95,7 +95,7 @@
 .btn-secondary:focus {
   background-color: #305496 !important;
   color: #fbb335 !important;
-  margin: 15px 140px 0px 0px;
+  margin: 15px 135px 0px 0px;
 }
 
 /* to add, edit delete buttons */
