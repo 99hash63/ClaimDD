@@ -15,7 +15,8 @@
           <div class="col czzz">
             <label for="inputEmail4">Select a Claimant</label>
             <div class="input-group mb-3">
-              <select class="form-control" id="exampleFormControlSelect1">
+
+              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectClaiamant === 'lock'">
                 <option>Claimant 1</option>
                 <option>Claimant 2</option>
                 <option>Claimant 3</option>
@@ -23,15 +24,23 @@
                 <option>Claimant 5</option>
                 <option>Claimant 6</option>
               </select>
-              <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2"><i i-bs name="lock"></i></span>
+              <div class="input-group-append ">
+                <div *ngIf="selectClaiamant === 'lock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockClaimant()><i i-bs
+                      name="lock"></i></button>
+                </div>
+                <div *ngIf="selectClaiamant === 'unlock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockClaimant()><i i-bs
+                      name="unlock"></i></button>
+                </div>
+
               </div>
 
             </div>
             <!-- add edit buttons -->
-            <div class="row" style="margin-top: 15px; padding-left: 2px;">
+            <div class="row" style="margin-top: 15px; padding-left: 2px;" *ngIf="selectClaiamant === 'unlock'">
               <div class=" col-sm-3 ">
-                <button type="submit" class="btn btn-success">Add</button>
+                <button type=" submit" class="btn btn-success">Add</button>
               </div>
               <div class="col-sm-3 ">
                 <button type="submit" class="btn btn-success">Edit</button>
@@ -47,7 +56,7 @@
             <label for="inputEmail4">Select a Project</label>
 
             <div class="input-group mb-3">
-              <select class="form-control" id="exampleFormControlSelect1">
+              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectProject === 'lock'">
                 <option>Project 1</option>
                 <option>Project 2</option>
                 <option>Project 3</option>
@@ -55,12 +64,19 @@
                 <option>Project 5</option>
                 <option>Project 6</option>
               </select>
-              <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2"><i i-bs name="unlock"></i></span>
+              <div class=" input-group-append ">
+                <div *ngIf=" selectProject==='lock'">
+                  <button class=" input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockProject()><i i-bs
+                      name="lock"></i></button>
+                </div>
+                <div *ngIf="selectProject === 'unlock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockProject()><i i-bs
+                      name="unlock"></i></button>
+                </div>
               </div>
             </div>
             <!-- add edit buttons -->
-            <div class="row" style="margin-top: 15px; padding-left: 2px;">
+            <div class="row" style="margin-top: 15px; padding-left: 2px;" *ngIf="selectProject === 'unlock'">
               <div class=" col-sm-3 ">
                 <button type="submit" class="btn btn-success">Add</button>
               </div>
