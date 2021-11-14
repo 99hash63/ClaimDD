@@ -8,12 +8,23 @@
   <div class="main-card-body card-body">
     <div>
       <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm">
+        <div class="col-sm-8">
           <button type="button" class="btn btn-primary btn" style="color: #fbb335; background-color: #305496;">Add
             &nbsp;
             <i i-bs name="plus-circle"></i></button>
         </div>
-        <div class="col-sm" style="text-align: right;">
+
+        <!-- search button -->
+        <div class="col-sm">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+
+
+        <div class="col-sm-1" style="text-align: right;">
+
           <button type="button" class="btn btn-primary btn" style="color: #305496; background-color: #fbb335;">Export
           </button>
         </div>
@@ -85,6 +96,7 @@
           </tr>
         </tbody>
       </table>
+      <button type="submit" class="btn btn-secondary float-right">Done</button>
 
     </div>
 

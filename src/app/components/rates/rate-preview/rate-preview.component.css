@@ -61,3 +61,18 @@ td {
 .delete-icon {
   color: red;
 }
+
+.btn-outline-primary {
+  /* background-color: #305496 !important; */
+  color: #305496 !important;
+  border-color: #305496;
+  /* margin: 7px 0px 0px 0px; */
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+  background-color: #305496 !important;
+  color: white !important;
+  /* margin: 7px 0px 0px 0px; */
+}
