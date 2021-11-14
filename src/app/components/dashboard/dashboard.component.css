@@ -72,3 +72,46 @@
 .delete-icon {
   color: red;
 }
+
+.h5-heading {
+  text-transform: uppercase;
+  color: #fbb335;
+}
+
+.czzz {
+  padding: 5px 150px 5px 5px;
+}
+
+/* next button */
+.btn-secondary {
+  background-color: #fbb335;
+  color: #305496;
+  margin: 15px 140px 0px 0px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+  margin: 15px 140px 0px 0px;
+}
+
+/* to add, edit delete buttons */
+.btn-success {
+  background-color: #fbb335;
+  color: #305496;
+  width: 80px;
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus {
+  background-color: #305496 !important;
+  color: #fbb335 !important;
+}
+
+.h6-audit {
+  color: #305496;
+  text-decoration: underline;
+}
