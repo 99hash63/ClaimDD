@@ -121,3 +121,8 @@
   /* background-color: black; */
   color: #fbb335;
 }
+
+td,
+label {
+  color: #305496;
+}
