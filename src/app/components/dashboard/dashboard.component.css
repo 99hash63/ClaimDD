@@ -37,7 +37,8 @@
 }
 
 .set-inputs {
-  margin-right: 16px;
+  /* margin-right: 56px; */
+  max-width: 315px;
   margin-left: 20px;
 }
 
