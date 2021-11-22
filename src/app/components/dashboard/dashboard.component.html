@@ -18,7 +18,9 @@
 
               <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectClaiamant === 'lock'"
                 [(ngModel)]="selectedClaimant" (change)="selected()" name="something">
-                <option [ngValue]="'default'" [disabled]="true" selected>Select a Claimant</option>
+                <option [ngValue]="'default'" selected disabled>{{selectedClaimantObject.claimantID}}
+                  {{selectedClaimantObject.name}}
+                </option>
 
                 <option *ngFor="let CLAIMANTS_LIST of CLAIMANTS_LIST" [ngValue]="CLAIMANTS_LIST._id">
                   {{CLAIMANTS_LIST.claimantID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{CLAIMANTS_LIST.name}}
@@ -60,6 +62,9 @@
               <!-- if selected claimant has projects -->
               <select *ngIf=" claimantHasProjects===true" class="form-control" id="exampleFormControlSelect1"
                 [disabled]="selectProject === 'lock'">
+                <option [ngValue]="'default'" selected disabled>{{selectedProjectObject.projectID}}
+                  {{selectedProjectObject.name}}
+                </option>
                 <option *ngFor="let PROJECT_LIST of PROJECT_LIST">
                   {{PROJECT_LIST.projectID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{PROJECT_LIST.name}}
                 </option>

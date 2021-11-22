@@ -3,6 +3,8 @@ import { ClaimantService } from 'src/app/shared/claimant.service';
 import { Claimant } from 'src/app/shared/claimant.model';
 import { ProjectService } from 'src/app/shared/project.service';
 import { Project } from 'src/app/shared/project.model';
+import { DefaultDataService } from 'src/app/shared/default-data.service';
+import { DefaultData } from 'src/app/shared/default-data.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,9 +13,14 @@ import { Project } from 'src/app/shared/project.model';
 export class DashboardComponent implements OnInit {
   //selected claimant in dropdown
   public selectedClaimant: any = 'default';
+  public selectedClaimantObject!: any;
+
+  //selected project in dropdown
+  public selectedProject: any = 'default';
+  public selectedProjectObject!: any;
 
   //check if selected claimant has projects
-  claimantHasProjects = false;
+  claimantHasProjects = true;
   projectsMessage = 'please select a claimant';
   //dropdown list for claimants
   CLAIMANTS_LIST!: Claimant[];
@@ -29,10 +36,24 @@ export class DashboardComponent implements OnInit {
   selectProject = 'lock';
   constructor(
     public claimantService: ClaimantService,
-    public projectService: ProjectService
+    public projectService: ProjectService,
+    public defaultDataService: DefaultDataService
   ) {}
 
   ngOnInit(): void {
+    //get default data
+    this.defaultDataService.getDefaultData().subscribe(
+      (res) => {
+        console.log(res['data']);
+        const defaultData = res['data'] as DefaultData;
+        this.selectedClaimantObject = defaultData.claimantID;
+        this.selectedProjectObject = defaultData.projectID;
+      },
+      (err) => {
+        console.log('waradine');
+      }
+    );
+
     // get claimants to the dropdown
     this.claimantService.getAllClaimants().subscribe(
       (res) => {
