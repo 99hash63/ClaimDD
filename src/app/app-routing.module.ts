@@ -11,12 +11,14 @@ import { ClaimComponent } from './components/claim/claim.component';
 import { ReportComponent } from './components/report/report.component';
 import { ContemporaryRecordsComponent } from './components/contemporary-records/contemporary-records.component';
 import { RatePreviewComponent } from './components/rates/rate-preview/rate-preview.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     pathMatch: 'full',
+    canActivate: [AuthGuard],
   },
   {
     path: 'contract-particulars',

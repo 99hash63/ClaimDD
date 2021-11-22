@@ -16,13 +16,14 @@
             <label for="inputEmail4">Select a Claimant</label>
             <div class="input-group mb-3">
 
-              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectClaiamant === 'lock'">
-                <option>Claimant 1</option>
-                <option>Claimant 2</option>
-                <option>Claimant 3</option>
-                <option>Claimant 4</option>
-                <option>Claimant 5</option>
-                <option>Claimant 6</option>
+              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectClaiamant === 'lock'"
+                [(ngModel)]="selectedClaimant" (change)="selected()" name="something">
+                <option [ngValue]="'default'" [disabled]="true" selected>Select a Claimant</option>
+
+                <option *ngFor="let CLAIMANTS_LIST of CLAIMANTS_LIST" [ngValue]="CLAIMANTS_LIST._id">
+                  {{CLAIMANTS_LIST.claimantID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{CLAIMANTS_LIST.name}}
+                </option>
+
               </select>
               <div class="input-group-append ">
                 <div *ngIf="selectClaiamant === 'lock'">
@@ -56,15 +57,15 @@
             <label for="inputEmail4">Select a Project</label>
 
             <div class="input-group mb-3">
-              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectProject === 'lock'">
-                <option>Project 1</option>
-                <option>Project 2</option>
-                <option>Project 3</option>
-                <option>Project 4</option>
-                <option>Project 5</option>
-                <option>Project 6</option>
+              <!-- if selected claimant has projects -->
+              <select *ngIf=" claimantHasProjects===true" class="form-control" id="exampleFormControlSelect1"
+                [disabled]="selectProject === 'lock'">
+                <option *ngFor="let PROJECT_LIST of PROJECT_LIST">
+                  {{PROJECT_LIST.projectID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{PROJECT_LIST.name}}
+                </option>
               </select>
-              <div class=" input-group-append ">
+              <!-- if selected claimant has projects -->
+              <div class=" input-group-append " *ngIf=" claimantHasProjects===true">
                 <div *ngIf=" selectProject==='lock'">
                   <button class=" input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockProject()><i i-bs
                       name="lock"></i></button>
@@ -72,6 +73,19 @@
                 <div *ngIf="selectProject === 'unlock'">
                   <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockProject()><i i-bs
                       name="unlock"></i></button>
+                </div>
+              </div>
+
+              <!-- if selected claimant doesnt have projects -->
+              <select *ngIf=" claimantHasProjects===false" class="form-control" id="exampleFormControlSelect1" disabled>
+                <option>
+                  {{projectsMessage}}
+                </option>
+              </select>
+              <!-- if selected claimant doesnt have projects -->
+              <div class=" input-group-append " *ngIf=" claimantHasProjects===false">
+                <div *ngIf=" selectProject==='lock'">
+                  <a class=" input-group-text lock-unlock" id="basic-addon2"><i i-bs name="lock"></i></a>
                 </div>
               </div>
             </div>
