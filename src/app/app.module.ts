@@ -21,6 +21,13 @@ import { CpOriginalComponent } from './components/contract-particulars/cp-origin
 import { CpAmendmentComponent } from './components/contract-particulars/cp-amendment/cp-amendment.component';
 import { CpConditionsComponent } from './components/contract-particulars/cp-conditions/cp-conditions.component';
 import { RatePreviewComponent } from './components/rates/rate-preview/rate-preview.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './shared/user.service';
+import { ClaimantService } from './shared/claimant.service';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,8 +54,15 @@ import { RatePreviewComponent } from './components/rates/rate-preview/rate-previ
     BrowserModule,
     AppRoutingModule,
     NgxBootstrapIconsModule.pick(allIcons),
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
+    // CookieService,
+    UserService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

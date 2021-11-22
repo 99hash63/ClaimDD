@@ -6,10 +6,13 @@
   font-size: 13px;
 }
 
-.row {
-  padding-top: 25px;
-}
+/* .row {
+} */
 
 .col {
   text-align: center;
+}
+
+.footer-elements {
+  padding-top: 27px;
 }

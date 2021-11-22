@@ -39,7 +39,7 @@
 .btn-secondary {
   background-color: #fbb335;
   color: #305496;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .btn-secondary:hover,
@@ -51,7 +51,7 @@
 
 .form-check {
   min-width: 200px;
-  margin: 10px 80px 20px 0px;
+  margin: 10px 150px 20px 0px;
 }
 
 .form-check-input {

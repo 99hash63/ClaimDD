@@ -7,276 +7,204 @@
   </div>
   <div class="main-card-body card-body">
     <!-- body elements -->
-    <div class="container">
 
-      <div class="row">
+    <div class="row">
+      <h5 class="h5-heading">Claimant and project</h5>
+      <form>
+        <div class="form-row">
+          <div class="col czzz">
+            <label for="inputEmail4">Select a Claimant</label>
+            <div class="input-group mb-3">
 
-        <!-- claimant  -->
-        <div class="col ">
-          <div class="claimant-project-cards card">
-            <div class="card-body">
+              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectClaiamant === 'lock'"
+                [(ngModel)]="selectedClaimant" (change)="selected()" name="something">
+                <option [ngValue]="'default'" [disabled]="true" selected>Select a Claimant</option>
+
+                <option *ngFor="let CLAIMANTS_LIST of CLAIMANTS_LIST" [ngValue]="CLAIMANTS_LIST._id">
+                  {{CLAIMANTS_LIST.claimantID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{CLAIMANTS_LIST.name}}
+                </option>
+
+              </select>
+              <div class="input-group-append ">
+                <div *ngIf="selectClaiamant === 'lock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockClaimant()><i i-bs
+                      name="lock"></i></button>
+                </div>
+                <div *ngIf="selectClaiamant === 'unlock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockClaimant()><i i-bs
+                      name="unlock"></i></button>
+                </div>
+
+              </div>
+
+            </div>
+            <!-- add edit buttons -->
+            <div class="row" style="margin-top: 15px; padding-left: 2px;" *ngIf="selectClaiamant === 'unlock'">
+              <div class=" col-sm-3 ">
+                <button type=" submit" class="btn btn-success">Add</button>
+              </div>
+              <div class="col-sm-3 ">
+                <button type="submit" class="btn btn-success">Edit</button>
+              </div>
+              <div class="col-sm-3 ">
+                <button type="submit" class="btn btn-success">Delete</button>
+              </div>
+            </div>
 
 
-              <div class="container" style="padding: 0;">
-                <div class="row">
-                  <div class="col-sm">
-                    <h5 class="card-header-h5">Claimants</h5>
-                  </div>
-                  <div class="col-sm">
-                    <button type="button" class="btn btn-primary btn"
-                      style="margin-left: 150px; width: 130px; color: #fbb335; background-color: #305496;">Add New&nbsp;
-                      <i i-bs name="plus-circle"></i></button>
-                  </div>
+          </div>
+          <div class="col czzz">
+            <label for="inputEmail4">Select a Project</label>
+
+            <div class="input-group mb-3">
+              <!-- if selected claimant has projects -->
+              <select *ngIf=" claimantHasProjects===true" class="form-control" id="exampleFormControlSelect1"
+                [disabled]="selectProject === 'lock'">
+                <option *ngFor="let PROJECT_LIST of PROJECT_LIST">
+                  {{PROJECT_LIST.projectID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{PROJECT_LIST.name}}
+                </option>
+              </select>
+              <!-- if selected claimant has projects -->
+              <div class=" input-group-append " *ngIf=" claimantHasProjects===true">
+                <div *ngIf=" selectProject==='lock'">
+                  <button class=" input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockProject()><i i-bs
+                      name="lock"></i></button>
+                </div>
+                <div *ngIf="selectProject === 'unlock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockProject()><i i-bs
+                      name="unlock"></i></button>
                 </div>
               </div>
-              <br>
 
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col"></th>
-
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Tharinda Hashen Kottegoda</td>
-                    <td> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;
-                      <i i-bs name="archive-fill" class="delete-icon"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;
-                      <i i-bs name="archive-fill" class="delete-icon"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Mark</td>
-                    <td> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;
-                      <i i-bs name="archive-fill" class="delete-icon"></i>
-                    </td>
-
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- project  -->
-        <div class="col">
-          <div class="claimant-project-cards card">
-            <div class="card-body">
-
-
-              <div class="container" style="padding: 0; ">
-                <div class="row">
-                  <div class="col-sm">
-                    <h5 class="card-header-h5">Projects</h5>
-                  </div>
-                  <div class="col-sm">
-                    <button type="button" class="btn btn-primary btn"
-                      style="margin-left: 150px; width: 130px; color: #fbb335; background-color: #305496;">Add
-                      New&nbsp;
-                      <i i-bs name="plus-circle"></i></button>
-                  </div>
+              <!-- if selected claimant doesnt have projects -->
+              <select *ngIf=" claimantHasProjects===false" class="form-control" id="exampleFormControlSelect1" disabled>
+                <option>
+                  {{projectsMessage}}
+                </option>
+              </select>
+              <!-- if selected claimant doesnt have projects -->
+              <div class=" input-group-append " *ngIf=" claimantHasProjects===false">
+                <div *ngIf=" selectProject==='lock'">
+                  <a class=" input-group-text lock-unlock" id="basic-addon2"><i i-bs name="lock"></i></a>
                 </div>
               </div>
-              <br>
-
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col"></th>
-
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Port Citya</td>
-                    <td> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;
-                      <i i-bs name="archive-fill" class="delete-icon"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Construction VA</td>
-                    <td> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;
-                      <i i-bs name="archive-fill" class="delete-icon"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Mark</td>
-                    <td> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;
-                      <i i-bs name="archive-fill" class="delete-icon"></i>
-                    </td>
-
-                  </tr>
-                </tbody>
-              </table>
             </div>
+            <!-- add edit buttons -->
+            <div class="row" style="margin-top: 15px; padding-left: 2px;" *ngIf="selectProject === 'unlock'">
+              <div class=" col-sm-3 ">
+                <button type="submit" class="btn btn-success">Add</button>
+              </div>
+              <div class="col-sm-3 ">
+                <button type="submit" class="btn btn-success">Edit</button>
+              </div>
+              <div class="col-sm-3 ">
+                <button type="submit" class="btn btn-success">Delete</button>
+              </div>
+            </div>
+
+
           </div>
         </div>
+      </form>
+    </div>
 
+    <div class="row" style="margin-top: 20px;">
+      <!-- contract  -->
+      <div class="col d-flex justify-content-center czzz" style="margin-left: 5px;">
+        <div class="card con-event-other " style="width: 18rem;">
+          <div class="card-body ">
+            <h5 class="card-header-h5">Contracts</h5>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">
+                    Original
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CONTRACT PRICE</td>
+                  <td>##</td>
+                </tr>
+                <tr>
+                  <td>CONTRACT DURATION</td>
+                  <td>##</td>
+                </tr>
+                <tr>
+                  <td>CONTRACT COMPLETION DATE</td>
+                  <td>##</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
-      <div class="row" style="margin-top: 20px;">
-
-        <!-- contract  -->
-        <div class="col">
-          <div class="card con-event-other" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-header-h5">Contracts</h5>
-              <table class="table table-borderless">
-                <thead>
-                  <tr>
-
-                    <th scope="col"></th>
-                    <th scope="col">
-                      Original
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>CONTRACT PRICE</td>
-                    <td>##</td>
-                  </tr>
-                  <tr>
-                    <td>CONTRACT DURATION</td>
-                    <td>##</td>
-                  </tr>
-                  <tr>
-                    <td>CONTRACT COMPLETION DATE</td>
-                    <td>##</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+      <!-- events  -->
+      <div class="col d-flex justify-content-center czzz" style=" padding-left: 0;">
+        <div class="card con-event-other" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-header-h5">Events</h5>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TOTAL EVENTS</td>
+                  <td>##</td>
+                </tr>
+                <tr>
+                  <td>CLAIMABLE EVENTS</td>
+                  <td>##</td>
+                </tr>
+                <tr>
+                  <td>CLAIMED EVENTS</td>
+                  <td>##</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-
-        <!-- events  -->
-        <div class="col">
-          <div class="card con-event-other" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-header-h5">Events</h5>
-              <table class="table table-borderless">
-                <thead>
-                  <tr>
-
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>TOTAL EVENTS</td>
-                    <td>##</td>
-                  </tr>
-                  <tr>
-                    <td>CLAIMABLE EVENTS</td>
-                    <td>##</td>
-                  </tr>
-                  <tr>
-                    <td>CLAIMED EVENTS</td>
-                    <td>##</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- other  -->
-        <div class="col">
-          <div class="card con-event-other" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-header-h5">Other</h5>
-              <table class="table table-borderless">
-                <thead>
-                  <tr>
-
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
       </div>
+      <!-- other  -->
+      <!-- <div class="col d-flex justify-content-center">
+        <div class="card con-event-other" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-header-h5">Other</h5>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> -->
     </div>
 
 
-    <!-- set values function -->
-    <!-- <div class="container">
-      <h5 style="color: #fbb335; text-decoration: underline;">SET</h5>
-      <div class="container" style="margin-top: 20px;">
-        <div class="row">
-          <div class="col-sm-1">
-            Format </div>
-          <div class="col-sm-3">
-            Date
-            <input type="text">
-          </div>
-          <div class="col-sm-4">
-            Currency Format <input type="text">
-          </div>
-          <div class="col-sm-4">
-            Decimal Places
-            <input type="text">
-          </div>
-        </div>
-      </div>
-      <div class="container" style="margin-top: 20px;">
-        <div class="row">
-          <div class="col-sm-1">
-            Referred As </div>
-          <div class="col-sm-3">
-            Contract As
-            <input type="text">
-          </div>
-          <div class="col-sm-4">
-            Claimant As
-            <input type="text">
-          </div>
-          <div class="col-sm-4">
-            Defendant As
-            <input type="text">
-          </div>
-        </div>
-      </div>
-    </div> -->
+
 
   </div>
   <!-- new body -->
