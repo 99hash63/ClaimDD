@@ -16,18 +16,18 @@
             <label for="inputEmail4">Select a Claimant</label>
             <div class="input-group mb-3">
 
-              <select class="form-control" id="exampleFormControlSelect1" [disabled]="selectClaiamant === 'lock'"
-                [(ngModel)]="selectedClaimant" (change)="selected()" name="something">
+              <!-- if user has claimants -->
+              <select *ngIf=" userHasClaimants===true" class="form-control" id="exampleFormControlSelect1"
+                [disabled]="selectClaiamant === 'lock'" [(ngModel)]="selectedClaimant" (change)="selected()"
+                name="something">
                 <option [ngValue]="'default'" selected disabled>{{selectedClaimantObject.claimantID}}
                   {{selectedClaimantObject.name}}
                 </option>
-
                 <option *ngFor="let CLAIMANTS_LIST of CLAIMANTS_LIST" [ngValue]="CLAIMANTS_LIST._id">
                   {{CLAIMANTS_LIST.claimantID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{CLAIMANTS_LIST.name}}
                 </option>
-
               </select>
-              <div class="input-group-append ">
+              <div *ngIf=" userHasClaimants===true" class="input-group-append ">
                 <div *ngIf="selectClaiamant === 'lock'">
                   <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockClaimant()><i i-bs
                       name="lock"></i></button>
@@ -36,8 +36,27 @@
                   <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockClaimant()><i i-bs
                       name="unlock"></i></button>
                 </div>
-
               </div>
+
+              <!-- if user doesnt have claimants -->
+              <select *ngIf=" userHasClaimants===false" class="form-control" id="exampleFormControlSelect1"
+                [disabled]="selectClaiamant === 'lock'" [(ngModel)]="selectedClaimant" (change)="selected()"
+                name="something">
+                <option [ngValue]="'default'" selected disabled>{{claimantsMessage}}
+                </option>
+              </select>
+              <div *ngIf=" userHasClaimants===false" class="input-group-append ">
+                <div *ngIf="selectClaiamant === 'lock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockClaimant()><i i-bs
+                      name="lock"></i></button>
+                </div>
+                <div *ngIf="selectClaiamant === 'unlock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockClaimant()><i i-bs
+                      name="unlock"></i></button>
+                </div>
+              </div>
+
+
 
             </div>
             <!-- add edit buttons -->
@@ -59,18 +78,36 @@
             <label for="inputEmail4">Select a Project</label>
 
             <div class="input-group mb-3">
-              <!-- if selected claimant has projects -->
-              <select *ngIf=" claimantHasProjects===true" class="form-control" id="exampleFormControlSelect1"
-                [disabled]="selectProject === 'lock'">
-                <option [ngValue]="'default'" selected disabled>{{selectedProjectObject.projectID}}
-                  {{selectedProjectObject.name}}
+
+              <!-- no default claimant -->
+              <select *ngIf="userHasClaimants===false" class="form-control" id="exampleFormControlSelect1"
+                [disabled]="selectProject === 'lock'" [(ngModel)]="selectedProject" (change)="selectedP()"
+                name="something2">
+                <option [ngValue]="'default'" selected disabled>{{projectsMessage}}
                 </option>
-                <option *ngFor="let PROJECT_LIST of PROJECT_LIST">
+                <option *ngFor="let PROJECT_LIST of PROJECT_LIST" [ngValue]="PROJECT_LIST._id">
                   {{PROJECT_LIST.projectID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{PROJECT_LIST.name}}
                 </option>
               </select>
-              <!-- if selected claimant has projects -->
-              <div class=" input-group-append " *ngIf=" claimantHasProjects===true">
+              <div class=" input-group-append " *ngIf="userHasClaimants===false">
+                <div *ngIf=" selectProject==='lock'">
+                  <a class=" input-group-text lock-unlock" id="basic-addon2"><i i-bs name="lock"></i></a>
+                </div>
+              </div>
+
+              <!-- claimant selected and has a default project -->
+              <select *ngIf="userHasClaimants===true&&userHasProjects===true" class="form-control"
+                id="exampleFormControlSelect1" [disabled]="selectProject === 'lock'" [(ngModel)]="selectedProject"
+                (change)="selectedP()" name="something2">
+                <option [ngValue]="'default'" selected disabled>
+                  {{selectedProjectObject.projectID}}
+                  {{selectedProjectObject.name}}
+                </option>
+                <option *ngFor="let PROJECT_LIST of PROJECT_LIST" [ngValue]="PROJECT_LIST._id">
+                  {{PROJECT_LIST.projectID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{PROJECT_LIST.name}}
+                </option>
+              </select>
+              <div class=" input-group-append " *ngIf="userHasClaimants===true&&userHasProjects===true">
                 <div *ngIf=" selectProject==='lock'">
                   <button class=" input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockProject()><i i-bs
                       name="lock"></i></button>
@@ -81,19 +118,46 @@
                 </div>
               </div>
 
-              <!-- if selected claimant doesnt have projects -->
-              <select *ngIf=" claimantHasProjects===false" class="form-control" id="exampleFormControlSelect1" disabled>
-                <option>
-                  {{projectsMessage}}
+              <!-- claimant selected, no default project but claimant has projects-->
+              <select *ngIf="userHasClaimants===true&&userHasProjects===false&&claimantHasProjects===true"
+                class="form-control" id="exampleFormControlSelect1" [disabled]="selectProject === 'lock'"
+                [(ngModel)]="selectedProject" (change)="selectedP()" name="something2">
+                <option [ngValue]="'default'" selected disabled> {{projectsMessage}}
+                </option>
+                <option *ngFor="let PROJECT_LIST of PROJECT_LIST" [ngValue]="PROJECT_LIST._id">
+                  {{PROJECT_LIST.projectID}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{PROJECT_LIST.name}}
                 </option>
               </select>
-              <!-- if selected claimant doesnt have projects -->
-              <div class=" input-group-append " *ngIf=" claimantHasProjects===false">
+              <div class=" input-group-append "
+                *ngIf="userHasClaimants===true&&userHasProjects===false&&claimantHasProjects===true">
                 <div *ngIf=" selectProject==='lock'">
+                  <button class=" input-group-text lock-unlock" id="basic-addon2" (click)=onUnlockProject()><i i-bs
+                      name="lock"></i></button>
+                </div>
+                <div *ngIf="selectProject === 'unlock'">
+                  <button class="input-group-text lock-unlock" id="basic-addon2" (click)=onLockProject()><i i-bs
+                      name="unlock"></i></button>
+                </div>
+              </div>
+
+              <!--  claimant selected, no default project but claimant has no any projects -->
+              <select *ngIf="userHasClaimants===true&&userHasProjects==false&&claimantHasProjects==false"
+                class="form-control" id="exampleFormControlSelect1" disabled [(ngModel)]="selectedProject"
+                (change)="selectedP()" name="something2">
+                <option [ngValue]="'default'" selected disabled> {{projectsMessage}}
+                </option>
+              </select>
+              <div class=" input-group-append "
+                *ngIf="userHasClaimants===true&&userHasProjects==false&&claimantHasProjects==false">
+                <div>
                   <a class=" input-group-text lock-unlock" id="basic-addon2"><i i-bs name="lock"></i></a>
                 </div>
               </div>
+
+
             </div>
+
+
             <!-- add edit buttons -->
             <div class="row" style="margin-top: 15px; padding-left: 2px;" *ngIf="selectProject === 'unlock'">
               <div class=" col-sm-3 ">

@@ -16,4 +16,23 @@ export class DefaultDataService {
   getDefaultData(): Observable<any> {
     return this.http.get(environment.apiBaseUrl + '/defaultData');
   }
+
+  //function to add default claimant
+  addDefaultClaimant(claimantID: string): Observable<any> {
+    return this.http.post(environment.apiBaseUrl + '/defaultData/claimant', {
+      claimantID: claimantID,
+    });
+  }
+
+  //function to add default project
+  addDefaultProject(projectID: string): Observable<any> {
+    return this.http.post(environment.apiBaseUrl + '/defaultData/project', {
+      projectID: projectID,
+    });
+  }
+
+  //function to remove default project
+  removeDefaultProject(): Observable<any> {
+    return this.http.delete(environment.apiBaseUrl + '/defaultData/project');
+  }
 }

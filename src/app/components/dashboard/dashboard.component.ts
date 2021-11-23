@@ -11,6 +11,17 @@ import { DefaultData } from 'src/app/shared/default-data.model';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  //check if user has claimants
+  userHasClaimants = false;
+  claimantsMessage = 'No claimants added yet';
+
+  //check if user has projects
+  userHasProjects = false;
+  projectsMessage = 'loading...';
+
+  //check if selected claimant has projects
+  claimantHasProjects = false;
+
   //selected claimant in dropdown
   public selectedClaimant: any = 'default';
   public selectedClaimantObject!: any;
@@ -19,9 +30,6 @@ export class DashboardComponent implements OnInit {
   public selectedProject: any = 'default';
   public selectedProjectObject!: any;
 
-  //check if selected claimant has projects
-  claimantHasProjects = true;
-  projectsMessage = 'please select a claimant';
   //dropdown list for claimants
   CLAIMANTS_LIST!: Claimant[];
 
@@ -46,11 +54,33 @@ export class DashboardComponent implements OnInit {
       (res) => {
         console.log(res['data']);
         const defaultData = res['data'] as DefaultData;
-        this.selectedClaimantObject = defaultData.claimantID;
-        this.selectedProjectObject = defaultData.projectID;
+        if (defaultData.claimantID == null) {
+          //showing no claimants added message in cliamant dropdown
+          this.userHasClaimants = false;
+          //showing please select a claiamnt message in project dropdwon
+          this.claimantHasProjects = false;
+          this.projectsMessage = 'Please add a claimant first';
+          //lock project tab
+          this.onLockProject();
+        } else {
+          this.userHasClaimants = true;
+          this.selectedClaimantObject = defaultData.claimantID;
+          //triggering set project dropwon
+          this.projectsMessage = 'loading...';
+          this.setProjectsDropdown(this.selectedClaimantObject._id);
+        }
+
+        if (defaultData.projectID == null) {
+          //setting user has default project to false
+          this.userHasProjects = false;
+        } else {
+          this.userHasProjects = true;
+          this.selectedProjectObject = defaultData.projectID;
+          console.log('menna project', this.selectedProjectObject);
+        }
       },
       (err) => {
-        console.log('waradine');
+        console.log('error');
       }
     );
 
@@ -93,6 +123,40 @@ export class DashboardComponent implements OnInit {
     //triggering set project dropwon
     this.projectsMessage = 'loading...';
     this.setProjectsDropdown(this.selectedClaimant);
+
+    //updating default claimant
+    this.defaultDataService.addDefaultClaimant(this.selectedClaimant).subscribe(
+      (res) => {
+        console.log(res['success']);
+      },
+      (err) => {
+        console.log(err.error);
+      }
+    );
+
+    //removing default project
+    this.defaultDataService.removeDefaultProject().subscribe(
+      (res) => {
+        console.log(res['success']);
+      },
+      (err) => {
+        console.log(err.error);
+      }
+    );
+    window.location.reload();
+  }
+
+  //getting selected project in dropdown
+  selectedP() {
+    // updating default project
+    this.defaultDataService.addDefaultProject(this.selectedProject).subscribe(
+      (res) => {
+        console.log(res['success']);
+      },
+      (err) => {
+        console.log(err.error);
+      }
+    );
   }
 
   //set projects dropdown
@@ -100,6 +164,8 @@ export class DashboardComponent implements OnInit {
     this.projectService.getProjectsofClaimant(claimantID).subscribe(
       (res) => {
         this.claimantHasProjects = true;
+        console.log('hiiiiiiiiiiiiiiii');
+        this.projectsMessage = 'Please select a project';
         this.projects = res['data'] as Project[];
         this.PROJECT_LIST = this.projects;
         console.log(this.projects);
@@ -109,6 +175,8 @@ export class DashboardComponent implements OnInit {
           console.log('yes');
           this.claimantHasProjects = false;
           this.projectsMessage = 'Selected claimant has no projects';
+          //lock project tab
+          this.onLockProject();
         } else console.log('no');
       }
     );
