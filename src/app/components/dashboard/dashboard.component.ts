@@ -138,12 +138,12 @@ export class DashboardComponent implements OnInit {
     this.defaultDataService.removeDefaultProject().subscribe(
       (res) => {
         console.log(res['success']);
+        window.location.reload();
       },
       (err) => {
         console.log(err.error);
       }
     );
-    window.location.reload();
   }
 
   //getting selected project in dropdown
