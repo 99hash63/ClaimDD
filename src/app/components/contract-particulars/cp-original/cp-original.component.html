@@ -1,213 +1,215 @@
-<form style="margin-top: 20px;">
+<form style="margin-top: 20px;" #cpOriginalForm="ngForm"
+  (ngSubmit)="cpOriginalForm.valid && addCpOriginal(cpOriginalForm)">
   <h5 class="h5-heading">Original Contract</h5>
 
   <div class="form-row">
 
 
     <div class="col">
-
       <label for="inputEmail4">Name of the Defendant</label>
-
-      <input type="text" class="form-control" placeholder="Name">
+      <input type="text" class="form-control" placeholder="Name" #nameOfDefendant="ngModel"
+        [(ngModel)]="cpService.selectedCp.nameOfDefendant" name="nameOfDefendant">
     </div>
+
     <div class="col">
-
       <label for="inputEmail4">Contract Reference</label>
-
-      <input type="text" class="form-control" placeholder="Reference">
+      <input type="text" class="form-control" placeholder="Reference" #contractRef="ngModel"
+        [(ngModel)]="cpService.selectedCp.contractRef" name="contractRef">
     </div>
+
   </div>
   <div class="form-row">
     <div class="col">
       <label for="inputEmail4">Original Contract Price</label>
-
       <div class="form-inline">
-        <select #selectCurrency (change)="selectedCurrency(selectCurrency.value)" id="currency" class="form-control"
-          name="currency" style="width: 20%;">
+        <select id="currency" class="form-control" style="width: 20%;" #currency="ngModel"
+          [(ngModel)]="cpService.selectedCp.currency" name="currency">
           <!-- <option>currency</option> -->
           <option value="" disabled selected hidden>{{displayCurrency}}</option>
-          <option value="AFN">Afghan Afghani</option>
-          <option value="ALL">Albanian Lek</option>
-          <option value="DZD">Algerian Dinar</option>
-          <option value="AOA">Angolan Kwanza</option>
-          <option value="ARS">Argentine Peso</option>
-          <option value="AMD">Armenian Dram</option>
-          <option value="AWG">Aruban Florin</option>
-          <option value="AUD">Australian Dollar</option>
-          <option value="AZN">Azerbaijani Manat</option>
-          <option value="BSD">Bahamian Dollar</option>
-          <option value="BHD">Bahraini Dinar</option>
-          <option value="BDT">Bangladeshi Taka</option>
-          <option value="BBD">Barbadian Dollar</option>
-          <option value="BYR">Belarusian Ruble</option>
-          <option value="BEF">Belgian Franc</option>
-          <option value="BZD">Belize Dollar</option>
-          <option value="BMD">Bermudan Dollar</option>
-          <option value="BTN">Bhutanese Ngultrum</option>
-          <option value="BTC">Bitcoin</option>
-          <option value="BOB">Bolivian Boliviano</option>
-          <option value="BAM">Bosnia-Herzegovina Convertible Mark</option>
-          <option value="BWP">Botswanan Pula</option>
-          <option value="BRL">Brazilian Real</option>
-          <option value="GBP">British Pound Sterling</option>
-          <option value="BND">Brunei Dollar</option>
-          <option value="BGN">Bulgarian Lev</option>
-          <option value="BIF">Burundian Franc</option>
-          <option value="KHR">Cambodian Riel</option>
-          <option value="CAD">Canadian Dollar</option>
-          <option value="CVE">Cape Verdean Escudo</option>
-          <option value="KYD">Cayman Islands Dollar</option>
-          <option value="XOF">CFA Franc BCEAO</option>
-          <option value="XAF">CFA Franc BEAC</option>
-          <option value="XPF">CFP Franc</option>
-          <option value="CLP">Chilean Peso</option>
-          <option value="CNY">Chinese Yuan</option>
-          <option value="COP">Colombian Peso</option>
-          <option value="KMF">Comorian Franc</option>
-          <option value="CDF">Congolese Franc</option>
-          <option value="CRC">Costa Rican ColÃ³n</option>
-          <option value="HRK">Croatian Kuna</option>
-          <option value="CUC">Cuban Convertible Peso</option>
-          <option value="CZK">Czech Republic Koruna</option>
-          <option value="DKK">Danish Krone</option>
-          <option value="DJF">Djiboutian Franc</option>
-          <option value="DOP">Dominican Peso</option>
-          <option value="XCD">East Caribbean Dollar</option>
-          <option value="EGP">Egyptian Pound</option>
-          <option value="ERN">Eritrean Nakfa</option>
-          <option value="EEK">Estonian Kroon</option>
-          <option value="ETB">Ethiopian Birr</option>
-          <option value="EUR">Euro</option>
-          <option value="FKP">Falkland Islands Pound</option>
-          <option value="FJD">Fijian Dollar</option>
-          <option value="GMD">Gambian Dalasi</option>
-          <option value="GEL">Georgian Lari</option>
-          <option value="DEM">German Mark</option>
-          <option value="GHS">Ghanaian Cedi</option>
-          <option value="GIP">Gibraltar Pound</option>
-          <option value="GRD">Greek Drachma</option>
-          <option value="GTQ">Guatemalan Quetzal</option>
-          <option value="GNF">Guinean Franc</option>
-          <option value="GYD">Guyanaese Dollar</option>
-          <option value="HTG">Haitian Gourde</option>
-          <option value="HNL">Honduran Lempira</option>
-          <option value="HKD">Hong Kong Dollar</option>
-          <option value="HUF">Hungarian Forint</option>
-          <option value="ISK">Icelandic KrÃ³na</option>
-          <option value="INR">Indian Rupee</option>
-          <option value="IDR">Indonesian Rupiah</option>
-          <option value="IRR">Iranian Rial</option>
-          <option value="IQD">Iraqi Dinar</option>
-          <option value="ILS">Israeli New Sheqel</option>
-          <option value="ITL">Italian Lira</option>
-          <option value="JMD">Jamaican Dollar</option>
-          <option value="JPY">Japanese Yen</option>
-          <option value="JOD">Jordanian Dinar</option>
-          <option value="KZT">Kazakhstani Tenge</option>
-          <option value="KES">Kenyan Shilling</option>
-          <option value="KWD">Kuwaiti Dinar</option>
-          <option value="KGS">Kyrgystani Som</option>
-          <option value="LAK">Laotian Kip</option>
-          <option value="LVL">Latvian Lats</option>
-          <option value="LBP">Lebanese Pound</option>
-          <option value="LSL">Lesotho Loti</option>
-          <option value="LRD">Liberian Dollar</option>
-          <option value="LYD">Libyan Dinar</option>
-          <option value="LTL">Lithuanian Litas</option>
-          <option value="MOP">Macanese Pataca</option>
-          <option value="MKD">Macedonian Denar</option>
-          <option value="MGA">Malagasy Ariary</option>
-          <option value="MWK">Malawian Kwacha</option>
-          <option value="MYR">Malaysian Ringgit</option>
-          <option value="MVR">Maldivian Rufiyaa</option>
-          <option value="MRO">Mauritanian Ouguiya</option>
-          <option value="MUR">Mauritian Rupee</option>
-          <option value="MXN">Mexican Peso</option>
-          <option value="MDL">Moldovan Leu</option>
-          <option value="MNT">Mongolian Tugrik</option>
-          <option value="MAD">Moroccan Dirham</option>
-          <option value="MZM">Mozambican Metical</option>
-          <option value="MMK">Myanmar Kyat</option>
-          <option value="NAD">Namibian Dollar</option>
-          <option value="NPR">Nepalese Rupee</option>
-          <option value="ANG">Netherlands Antillean Guilder</option>
-          <option value="TWD">New Taiwan Dollar</option>
-          <option value="NZD">New Zealand Dollar</option>
-          <option value="NIO">Nicaraguan CÃ³rdoba</option>
-          <option value="NGN">Nigerian Naira</option>
-          <option value="KPW">North Korean Won</option>
-          <option value="NOK">Norwegian Krone</option>
-          <option value="OMR">Omani Rial</option>
-          <option value="PKR">Pakistani Rupee</option>
-          <option value="PAB">Panamanian Balboa</option>
-          <option value="PGK">Papua New Guinean Kina</option>
-          <option value="PYG">Paraguayan Guarani</option>
-          <option value="PEN">Peruvian Nuevo Sol</option>
-          <option value="PHP">Philippine Peso</option>
-          <option value="PLN">Polish Zloty</option>
-          <option value="QAR">Qatari Rial</option>
-          <option value="RON">Romanian Leu</option>
-          <option value="RUB">Russian Ruble</option>
-          <option value="RWF">Rwandan Franc</option>
-          <option value="SVC">Salvadoran ColÃ³n</option>
-          <option value="WST">Samoan Tala</option>
-          <option value="SAR">Saudi Riyal</option>
-          <option value="RSD">Serbian Dinar</option>
-          <option value="SCR">Seychellois Rupee</option>
-          <option value="SLL">Sierra Leonean Leone</option>
-          <option value="SGD">Singapore Dollar</option>
-          <option value="SKK">Slovak Koruna</option>
-          <option value="SBD">Solomon Islands Dollar</option>
-          <option value="SOS">Somali Shilling</option>
-          <option value="ZAR">South African Rand</option>
-          <option value="KRW">South Korean Won</option>
-          <option value="XDR">Special Drawing Rights</option>
-          <option value="LKR">Sri Lankan Rupee</option>
-          <option value="SHP">St. Helena Pound</option>
-          <option value="SDG">Sudanese Pound</option>
-          <option value="SRD">Surinamese Dollar</option>
-          <option value="SZL">Swazi Lilangeni</option>
-          <option value="SEK">Swedish Krona</option>
-          <option value="CHF">Swiss Franc</option>
-          <option value="SYP">Syrian Pound</option>
-          <option value="STD">São Tomé and Príncipe Dobra</option>
-          <option value="TJS">Tajikistani Somoni</option>
-          <option value="TZS">Tanzanian Shilling</option>
-          <option value="THB">Thai Baht</option>
-          <option value="TOP">Tongan pa'anga</option>
-          <option value="TTD">Trinidad & Tobago Dollar</option>
-          <option value="TND">Tunisian Dinar</option>
-          <option value="TRY">Turkish Lira</option>
-          <option value="TMT">Turkmenistani Manat</option>
-          <option value="UGX">Ugandan Shilling</option>
-          <option value="UAH">Ukrainian Hryvnia</option>
-          <option value="AED">United Arab Emirates Dirham</option>
-          <option value="UYU">Uruguayan Peso</option>
-          <option value="USD">US Dollar</option>
-          <option value="UZS">Uzbekistan Som</option>
-          <option value="VUV">Vanuatu Vatu</option>
-          <option value="VEF">Venezuelan BolÃ­var</option>
-          <option value="VND">Vietnamese Dong</option>
-          <option value="YER">Yemeni Rial</option>
-          <option value="ZMK">Zambian Kwacha</option>
+          <option [ngValue]="'AFN'">AFN (Afghan Afghani)</option>
+          <option [ngValue]="'ALL'">ALL (Albanian Lek))</option>
+          <option [ngValue]="'DZD'">DZD (Algerian Dinar)</option>
+          <option [ngValue]="'AOA'">AOA (Angolan Kwanza)</option>
+          <option [ngValue]="'ARS'">ARS (Argentine Peso)</option>
+          <option [ngValue]="'AMD'">AMD (Armenian Dram)</option>
+          <option [ngValue]="'AWG'">AWG (Aruban Florin)</option>
+          <option [ngValue]="'AUD'">AUD (Australian Dollar)</option>
+          <option [ngValue]="'AZN'">AZN (Azerbaijani Manat)</option>
+          <option [ngValue]="'BSD'">BSD (Bahamian Dollar)</option>
+          <option [ngValue]="'BHD'">BHD (Bahraini Dinar)</option>
+          <option [ngValue]="'BDT'">BDT (Bangladeshi Taka)</option>
+          <option [ngValue]="'BBD'">BBD (Barbadian Dollar)</option>
+          <option [ngValue]="'BYR'">BYR (Belarusian Ruble)</option>
+          <option [ngValue]="'BEF'">BEF (Belgian Franc)</option>
+          <option [ngValue]="'BZD'">BZD (Belize Dollar)</option>
+          <option [ngValue]="'BMD'">BMD (Bermudan Dollar)</option>
+          <option [ngValue]="'BTN'">BTN (Bhutanese Ngultrum)</option>
+          <option [ngValue]="'BTC'">BTC (Bitcoin)</option>
+          <option [ngValue]="'BOB'">BOB (Bolivian Boliviano)</option>
+          <option [ngValue]="'BAM'">BAM (Bosnia-Herzegovina Convertible Mark)</option>
+          <option [ngValue]="'BWP'">BWP (Botswanan Pula)</option>
+          <option [ngValue]="'BRL'">BRL (Brazilian Real)</option>
+          <option [ngValue]="'GBP'">GBP (British Pound Sterling)</option>
+          <option [ngValue]="'BND'">BND (Brunei Dollar)</option>
+          <option [ngValue]="'BGN'">BGN (Bulgarian Lev)</option>
+          <option [ngValue]="'BIF'">BIF (Burundian Franc)</option>
+          <option [ngValue]="'KHR'">KHR (Cambodian Riel)</option>
+          <option [ngValue]="'CAD'">CAD (Canadian Dollar)</option>
+          <option [ngValue]="'CVE'">CVE (Cape Verdean Escudo)</option>
+          <option [ngValue]="'KYD'">KYD (Cayman Islands Dollar)</option>
+          <option [ngValue]="'XOF'">XOF (CFA Franc BCEAO)</option>
+          <option [ngValue]="'XAF'">XAF (CFA Franc BEAC)</option>
+          <option [ngValue]="'XPF'">XPF (CFP Franc)</option>
+          <option [ngValue]="'CLP'">CLP (Chilean Peso)</option>
+          <option [ngValue]="'CNY'">CNY (Chinese Yuan)</option>
+          <option [ngValue]="'COP'">COP (Colombian Peso)</option>
+          <option [ngValue]="'KMF'">KMF (Comorian Franc)</option>
+          <option [ngValue]="'CDF'">CDF (Congolese Franc)</option>
+          <option [ngValue]="'CRC'">CRC (Costa Rican ColÃ³n)</option>
+          <option [ngValue]="'HRK'">HRK (Croatian Kuna)</option>
+          <option [ngValue]="'CUC'">CUC (Cuban Convertible Peso)</option>
+          <option [ngValue]="'CZK'">CZK (Czech Republic Koruna)</option>
+          <option [ngValue]="'DKK'">DKK (Danish Krone)</option>
+          <option [ngValue]="'DJF'">DJF (Djiboutian Franc)</option>
+          <option [ngValue]="'DOP'">DOP (Dominican Peso)</option>
+          <option [ngValue]="'XCD'">XCD (East Caribbean Dollar)</option>
+          <option [ngValue]="'EGP'">EGP (Egyptian Pound)</option>
+          <option [ngValue]="'ERN'">ERN (Eritrean Nakfa)</option>
+          <option [ngValue]="'EEK'">EEK (Estonian Kroon)</option>
+          <option [ngValue]="'ETB'">ETB (Ethiopian Birr)</option>
+          <option [ngValue]="'EUR'">EUR (Euro)</option>
+          <option [ngValue]="'FKP'">FKP (Falkland Islands Pound)</option>
+          <option [ngValue]="'FJD'">FJD (Fijian Dollar)</option>
+          <option [ngValue]="'GMD'">GMD (Gambian Dalasi)</option>
+          <option [ngValue]="'GEL'">GEL (Georgian Lari)</option>
+          <option [ngValue]="'DEM'">DEM (German Mark)</option>
+          <option [ngValue]="'GHS'">GHS (Ghanaian Cedi)</option>
+          <option [ngValue]="'GIP'">GIP (Gibraltar Pound)</option>
+          <option [ngValue]="'GRD'">GRD (Greek Drachma)</option>
+          <option [ngValue]="'GTQ'">GTQ (Guatemalan Quetzal)</option>
+          <option [ngValue]="'GNF'">GNF (Guinean Franc)</option>
+          <option [ngValue]="'GYD'">GYD (Guyanaese Dollar)</option>
+          <option [ngValue]="'HTG'">HTG (Haitian Gourde)</option>
+          <option [ngValue]="'HNL'">HNL (Honduran Lempira)</option>
+          <option [ngValue]="'HKD'">HKD (Hong Kong Dollar)</option>
+          <option [ngValue]="'HUF'">HUF (Hungarian Forint)</option>
+          <option [ngValue]="'ISK'">ISK (Icelandic KrÃ³na)</option>
+          <option [ngValue]="'INR'">INR (Indian Rupee)</option>
+          <option [ngValue]="'IDR'">IDR (Indonesian Rupiah)</option>
+          <option [ngValue]="'IRR'">IRR (Iranian Rial)</option>
+          <option [ngValue]="'IQD'">IQD (Iraqi Dinar)</option>
+          <option [ngValue]="'ILS'">ILS (Israeli New Sheqel)</option>
+          <option [ngValue]="'ITL'">ITL (Italian Lira)</option>
+          <option [ngValue]="'JMD'">JMD (Jamaican Dollar)</option>
+          <option [ngValue]="'JPY'">JPY (Japanese Yen)</option>
+          <option [ngValue]="'JOD'">JOD (Jordanian Dinar)</option>
+          <option [ngValue]="'KZT'">KZT (Kazakhstani Tenge)</option>
+          <option [ngValue]="'KES'">KES (Kenyan Shilling)</option>
+          <option [ngValue]="'KWD'">KWD (Kuwaiti Dinar)</option>
+          <option [ngValue]="'KGS'">KGS (Kyrgystani Som)</option>
+          <option [ngValue]="'LAK'">LAK (Laotian Kip)</option>
+          <option [ngValue]="'LVL'">LVL (Latvian Lats)</option>
+          <option [ngValue]="'LBP'">LBP (Lebanese Pound)</option>
+          <option [ngValue]="'LSL'">LSL (Lesotho Loti)</option>
+          <option [ngValue]="'LRD'">LRD (Liberian Dollar)</option>
+          <option [ngValue]="'LYD'">LYD (Libyan Dinar)</option>
+          <option [ngValue]="'LTL'">LTL (Lithuanian Litas)</option>
+          <option [ngValue]="'MOP'">MOP (Macanese Pataca)</option>
+          <option [ngValue]="'MKD'">MKD (Macedonian Denar)</option>
+          <option [ngValue]="'MGA'">MGA (Malagasy Ariary)</option>
+          <option [ngValue]="'MWK'">MWK (Malawian Kwacha)</option>
+          <option [ngValue]="'MYR'">MYR (Malaysian Ringgit)</option>
+          <option [ngValue]="'MVR'">MVR (Maldivian Rufiyaa)</option>
+          <option [ngValue]="'MRO'">MRO (Mauritanian Ouguiya)</option>
+          <option [ngValue]="'MUR'">MUR (Mauritian Rupee)</option>
+          <option [ngValue]="'MXN'">MXN (Mexican Peso)</option>
+          <option [ngValue]="'MDL'">MDL (Moldovan Leu)</option>
+          <option [ngValue]="'MNT'">MNT (Mongolian Tugrik)</option>
+          <option [ngValue]="'MAD'">MAD (Moroccan Dirham)</option>
+          <option [ngValue]="'MZM'">MZM (Mozambican Metical)</option>
+          <option [ngValue]="'MMK'">MMK (Myanmar Kyat)</option>
+          <option [ngValue]="'NAD'">NAD (Namibian Dollar)</option>
+          <option [ngValue]="'NPR'">NPR (Nepalese Rupee)</option>
+          <option [ngValue]="'ANG'">ANG (Netherlands Antillean Guilder)</option>
+          <option [ngValue]="'TWD'">TWD (New Taiwan Dollar)</option>
+          <option [ngValue]="'NZD'">NZD (New Zealand Dollar)</option>
+          <option [ngValue]="'NIO'">NIO (Nicaraguan CÃ³rdoba)</option>
+          <option [ngValue]="'NGN'">NGN (Nigerian Naira)</option>
+          <option [ngValue]="'KPW'">KPW (North Korean Won)</option>
+          <option [ngValue]="'NOK'">NOK (Norwegian Krone)</option>
+          <option [ngValue]="'OMR'">OMR (Omani Rial)</option>
+          <option [ngValue]="'PKR'">PKR (Pakistani Rupee)</option>
+          <option [ngValue]="'PAB'">PAB (Panamanian Balboa)</option>
+          <option [ngValue]="'PGK'">PGK (Papua New Guinean Kina)</option>
+          <option [ngValue]="'PYG'">PYG (Paraguayan Guarani)</option>
+          <option [ngValue]="'PEN'">PEN (Peruvian Nuevo Sol)</option>
+          <option [ngValue]="'PHP'">PHP (Philippine Peso)</option>
+          <option [ngValue]="'PLN'">PLN (Polish Zloty)</option>
+          <option [ngValue]="'QAR'">QAR (Qatari Rial)</option>
+          <option [ngValue]="'RON'">RON (Romanian Leu)</option>
+          <option [ngValue]="'RUB'">RUB (Russian Ruble)</option>
+          <option [ngValue]="'RWF'">RWF (Rwandan Franc)</option>
+          <option [ngValue]="'SVC'">SVC (Salvadoran ColÃ³n)</option>
+          <option [ngValue]="'WST'">WST (Samoan Tala)</option>
+          <option [ngValue]="'SAR'">SAR (Saudi Riyal)</option>
+          <option [ngValue]="'RSD'">RSD (Serbian Dinar)</option>
+          <option [ngValue]="'SCR'">SCR (Seychellois Rupee)</option>
+          <option [ngValue]="'SLL'">SLL (Sierra Leonean Leone)</option>
+          <option [ngValue]="'SGD'">SGD (Singapore Dollar)</option>
+          <option [ngValue]="'SKK'">SKK (Slovak Koruna)</option>
+          <option [ngValue]="'SBD'">SBD (Solomon Islands Dollar)</option>
+          <option [ngValue]="'SOS'">SOS (Somali Shilling)</option>
+          <option [ngValue]="'ZAR'">ZAR (South African Rand)</option>
+          <option [ngValue]="'KRW'">KRW (South Korean Won)</option>
+          <option [ngValue]="'XDR'">XDR (Special Drawing Rights)</option>
+          <option [ngValue]="'LKR'">LRK (Sri Lankan Rupee)</option>
+          <option [ngValue]="'SHP'">SHP (St. Helena Pound)</option>
+          <option [ngValue]="'SDG'">SDG (Sudanese Pound)</option>
+          <option [ngValue]="'SRD'">SRD (Surinamese Dollar)</option>
+          <option [ngValue]="'SZL'">SZL (Swazi Lilangeni)</option>
+          <option [ngValue]="'SEK'">SEK (Swedish Krona)</option>
+          <option [ngValue]="'CHF'">CHF (Swiss Franc)</option>
+          <option [ngValue]="'SYP'">SYP (Syrian Pound)</option>
+          <option [ngValue]="'STD'">STD (São Tomé and Príncipe Dobra)</option>
+          <option [ngValue]="'TJS'">TJS (Tajikistani Somoni)</option>
+          <option [ngValue]="'TZS'">TZS (Tanzanian Shilling)</option>
+          <option [ngValue]="'THB'">THB (Thai Baht)</option>
+          <option [ngValue]="'TOP'">TOP (Tongan pa'anga)</option>
+          <option [ngValue]="'TTD'">TTD (Trinidad & Tobago Dollar)</option>
+          <option [ngValue]="'TND'">TND (Tunisian Dinar)</option>
+          <option [ngValue]="'TRY'">TRY (Turkish Lira)</option>
+          <option [ngValue]="'TMT'">TMT (Turkmenistani Manat)</option>
+          <option [ngValue]="'UGX'">UGX (Ugandan Shilling)</option>
+          <option [ngValue]="'UAH'">UAH (Ukrainian Hryvnia)</option>
+          <option [ngValue]="'AED'">AED (United Arab Emirates Dirham)</option>
+          <option [ngValue]="'UYU'">UYU (Uruguayan Peso)</option>
+          <option [ngValue]="'USD'">USD (US Dollar)</option>
+          <option [ngValue]="'UZS'">UZS (Uzbekistan Som)</option>
+          <option [ngValue]="'VUV'">VUV (Vanuatu Vatu)</option>
+          <option [ngValue]="'VEF'">VEF (Venezuelan BolÃ­var)</option>
+          <option [ngValue]="'VND'">VND (Vietnamese Dong)</option>
+          <option [ngValue]="'YER'">YER (Yemeni Rial)</option>
+          <option [ngValue]="'ZMK'">ZMK (Zambian Kwacha)</option>
         </select>
-        <input type="text" class="form-control" placeholder="Price" style="width: 80%;">
+        <input type="text" class="form-control" placeholder="Price" style="width: 80%;" #originalContractPrice="ngModel"
+          [(ngModel)]="cpService.selectedCp.originalContractPrice" name="originalContractPrice">
       </div>
 
     </div>
     <div class="col">
       <label for="inputEmail4">Original Contract Duration</label>
-
       <div class="form-inline">
-        <select #selectCurrency (change)="selectedCurrency(selectCurrency.value)" id="currency" class="form-control"
-          name="currency" style="width: 20%;">
+        <select id="durationUnit" class="form-control" style="width: 20%;" #durationUnit="ngModel"
+          [(ngModel)]="cpService.selectedCp.durationUnit" name="durationUnit">
           <!-- <option>currency</option> -->
           <option value="" disabled selected hidden>Format</option>
-          <option value="AFN">Day</option>
-          <option value="ALL">Week</option>
-          <option value="ALL">Month</option>
+          <option [ngValue]="'Day'">Day</option>
+          <option [ngValue]="'Week'">Week</option>
+          <option [ngValue]="'Month'">Month</option>
         </select>
-        <input type="number" class="form-control" placeholder="Duration" style="width: 80%;">
+        <input type="number" class="form-control" placeholder="Duration" style="width: 80%;"
+          #originalContractDuration="ngModel" [(ngModel)]="cpService.selectedCp.originalContractDuration"
+          name="originalContractDuration">
       </div>
     </div>
   </div>
@@ -215,12 +217,13 @@
     <div class="col">
       <label for="inputEmail4">Commencement Date</label>
 
-      <input type="text" class="form-control" placeholder="Date" onfocus="(this.type='date')">
+      <input type="text" class="form-control" placeholder="Date" onfocus="(this.type='date')"
+        #commencementDate="ngModel" [(ngModel)]="cpService.selectedCp.commencementDate" name="commencementDate">
     </div>
     <div class="col">
       <label for="inputEmail4">Contract Working Hrs/Day</label>
-
-      <input type="number" class="form-control" placeholder="Working Hrs/Day">
+      <input type="number" class="form-control" placeholder="Working Hrs/Day" #workingHours="ngModel"
+        [(ngModel)]="cpService.selectedCp.workingHours" name="workingHours">
     </div>
   </div>
 
