@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cp } from './cp.model';
-
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Claimant } from './claimant.model';
 import { Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
@@ -62,7 +60,5 @@ export class CpService {
         return false;
       }
     );
-
-    return this.http.get(environment.apiBaseUrl + '/contractParticulars');
   }
 }
