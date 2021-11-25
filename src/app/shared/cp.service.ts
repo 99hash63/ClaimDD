@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root',
 })
 export class CpService {
+  today = new Date();
   selectedCp: Cp = {
     nameOfDefendant: '',
     contractRef: '',
@@ -17,7 +18,7 @@ export class CpService {
     originalContractPrice: 0,
     durationUnit: '',
     originalContractDuration: 0,
-    commencementDate: (new Date(), 'yyyy-MM-dd'),
+    commencementDate: this.datepipe.transform(this.today, 'yyyy-MM-dd'),
     workingHours: 0,
     claimCause: '',
     projectStatus: '',
