@@ -17,12 +17,14 @@ export class FinancialParticularsComponent implements OnInit {
   }
 
   addFp(form: NgForm) {
+    console.log('hi');
     this.fpService.addFinancialParticular(form.value).subscribe(
       (res) => {
         console.log(res['success']);
         this.router.navigateByUrl('events');
       },
       (err) => {
+        console.log('bye');
         console.log(err.error);
       }
     );
