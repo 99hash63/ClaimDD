@@ -5,33 +5,41 @@
 
     <div class="col">
       <label for="inputEmail4">Status</label>
-
-      <input type="text" class="form-control" placeholder="Status">
+      <input type="text" class="form-control" placeholder="Status" #projectStatus="ngModel"
+        [(ngModel)]="cpService.selectedCp.projectStatus" name="projectStatus">
     </div>
+
     <div class="col">
       <label for="inputEmail4">Latest Contract Amendment Reference</label>
-
-      <input type="text" class="form-control" placeholder="Reference">
+      <input type="text" class="form-control" placeholder="Reference" #latestAmendmentReference="ngModel"
+        [(ngModel)]="cpService.selectedCp.latestAmendmentReference" name="latestAmendmentReference">
     </div>
+
   </div>
   <div class="form-row">
+
     <div class="col">
       <label for="inputEmail4">Reviesd Contract Price</label>
-
-
       <div class="form-inline">
-        <input type="number" class="form-control" placeholder="AED" style="width: 20%;" disabled>
-        <input type="number" class="form-control" placeholder="Price" style="width: 80%;">
+        <input type="text" class="form-control" style="width: 20%;" #currency="ngModel"
+          [(ngModel)]="cpService.selectedCp.currency" name="currency" disabled>
+        <input type="number" class="form-control" placeholder="Price" style="width: 80%;"
+          #revisedContractPrice="ngModel" [(ngModel)]="cpService.selectedCp.revisedContractPrice"
+          name="revisedContractPrice">
       </div>
     </div>
+
     <div class="col">
       <label for="inputEmail4">Reviesd Contract Duration</label>
-
       <div class="form-inline">
-        <input type="number" class="form-control" placeholder="Month" style="width: 20%;" disabled>
-        <input type="number" class="form-control" placeholder="Duration" style="width: 80%;">
+        <input type="text" class="form-control" style="width: 20%;" disabled #durationUnit="ngModel"
+          [(ngModel)]="cpService.selectedCp.durationUnit" name="durationUnit">
+        <input type="number" class="form-control" placeholder="Duration" style="width: 80%;"
+          #revisedContractDuration="ngModel" [(ngModel)]="cpService.selectedCp.revisedContractDuration"
+          name="revisedContractDuration">
       </div>
     </div>
+
   </div>
 
 

@@ -5,9 +5,9 @@ export interface Cp {
   originalContractPrice: Number;
   durationUnit: string;
   originalContractDuration: Number;
-  commencementDate: Date;
+  commencementDate: any;
   workingHours: Number;
-  claimCause: [string];
+  claimCause: string;
   projectStatus: string;
   latestAmendmentReference: string;
   revisedContractPrice: Number;

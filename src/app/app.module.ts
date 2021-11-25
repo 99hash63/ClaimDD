@@ -28,6 +28,7 @@ import { UserService } from './shared/user.service';
 import { ClaimantService } from './shared/claimant.service';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { FormsModule } from '@angular/forms';
     AuthGuard,
     // CookieService,
     UserService,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })
