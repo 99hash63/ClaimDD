@@ -8,7 +8,7 @@ import { Events } from './events.model';
   providedIn: 'root',
 })
 export class EventsService {
-  selectedFp: Events = {
+  selectedEvent: Events = {
     eventID: '',
     description: '',
     type: '',
@@ -28,5 +28,10 @@ export class EventsService {
   //function to get events
   getEvents(): Observable<any> {
     return this.http.get(environment.apiBaseUrl + '/events');
+  }
+
+  //function to add new event
+  addEvents(event: Events): Observable<any> {
+    return this.http.post(environment.apiBaseUrl + '/events', event);
   }
 }

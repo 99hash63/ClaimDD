@@ -93,80 +93,96 @@
         <span aria-hidden="true">×</span>
       </button>
     </div>
-    <form>
+    <form #eventForm="ngForm" (ngSubmit)="eventForm.valid && addEventsForm(eventForm)">
 
       <div class="modal-body">
 
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="inputEmail4">Event ID</label>
-            <input type="text" placeholder="ID" class="form-control" id="inputEmail4">
+            <input type="text" placeholder="ID" class="form-control" id="inputEmail4" #eventID="ngModel"
+              [(ngModel)]="eventsService.selectedEvent.eventID" name="eventID">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Event Description</label>
-            <input type="text" placeholder="Description" class="form-control" id="inputPassword4">
+            <input type="text" placeholder="Description" class="form-control" id="inputPassword4" #description="ngModel"
+              [(ngModel)]="eventsService.selectedEvent.description" name="description">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Event Type</label>
-            <input type="text" placeholder="Type" class="form-control" id="inputEmail4">
+            <input type="text" placeholder="Type" class="form-control" id="inputEmail4" #type="ngModel"
+              [(ngModel)]="eventsService.selectedEvent.type" name="type">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Impact Start Date</label>
-            <input type="text" placeholder="Start Date" class="form-control" id="inputPassword4">
+            <input type="date" placeholder="Start Date" class="form-control" id="inputPassword4" #startDate="ngModel"
+              [(ngModel)]="eventsService.selectedEvent.startDate" name="startDate">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Impact End Date</label>
-            <input type="text" placeholder="End Date" class="form-control" id="inputEmail4">
+            <input type="date" placeholder="End Date" class="form-control" id="inputEmail4" #endDate="ngModel"
+              [(ngModel)]="eventsService.selectedEvent.endDate" name="endDate">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Impacted Days on Completion &nbsp; &nbsp; </label>
-            <input type="text" placeholder="Impacted Days" class="form-control" id="inputPassword4">
+            <input type="number" placeholder="Impacted Days" class="form-control" id="inputPassword4"
+              #daysOnCompletion="ngModel" [(ngModel)]="eventsService.selectedEvent.daysOnCompletion"
+              name="daysOnCompletion">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Extended Contract Duration before the event in Days</label>
-            <input type="text" placeholder="Extended Contract Duration" class="form-control" id="inputEmail4">
+            <input type="number" placeholder="Extended Contract Duration" class="form-control" id="inputEmail4"
+              #extendedContractDuaration="ngModel" [(ngModel)]="eventsService.selectedEvent.extendedContractDuaration"
+              name="extendedContractDuaration">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Planned Earned Value at Start in Currency</label>
-            <input type="text" placeholder="Planned Earned Value" class="form-control" id="inputPassword4">
+            <input type="number" placeholder="Planned Earned Value" class="form-control" id="inputPassword4"
+              #pevAtStart="ngModel" [(ngModel)]="eventsService.selectedEvent.pevAtStart" name="pevAtStart">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Actual Earned Value at Start in Currency</label>
-            <input type="text" placeholder="Actual Earned Value" class="form-control" id="inputEmail4">
+            <input type="number" placeholder="Actual Earned Value" class="form-control" id="inputEmail4"
+              #aevAtStart="ngModel" [(ngModel)]="eventsService.selectedEvent.aevAtStart" name="aevAtStart">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Planned Earned Value at End Currency</label>
-            <input type="text" placeholder="Planned Earned Value" class="form-control" id="inputPassword4">
+            <input type="number" placeholder="Planned Earned Value" class="form-control" id="inputPassword4"
+              #pevAtEnd="ngModel" [(ngModel)]="eventsService.selectedEvent.pevAtEnd" name="pevAtEnd">
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Actual Earned Value at End in Currency</label>
-            <input type="text" placeholder="Actual Earned Value" class="form-control" id="inputEmail4">
+            <input type="number" placeholder="Actual Earned Value" class="form-control" id="inputEmail4"
+              #aevAtEnd="ngModel" [(ngModel)]="eventsService.selectedEvent.aevAtEnd" name="aevAtEnd">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Cost Claimable</label>
-            <input type="text" placeholder="Cost Claimable" class="form-control" id="inputPassword4">
+            <input type="text" placeholder="Cost Claimable" class="form-control" id="inputPassword4"
+              #costClaimable="ngModel" [(ngModel)]="eventsService.selectedEvent.costClaimable" name="costClaimable">
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Time Claim Reference</label>
-            <input type="text" placeholder="Time Claim Reference" class="form-control" id="inputPassword4">
+            <input type="text" placeholder="Time Claim Reference" class="form-control" id="inputPassword4"
+              #timeClaimReference="ngModel" [(ngModel)]="eventsService.selectedEvent.timeClaimReference"
+              name="timeClaimReference">
           </div>
         </div>
 

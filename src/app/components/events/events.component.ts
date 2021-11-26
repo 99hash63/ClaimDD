@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EventsService } from 'src/app/shared/events.service';
 import { Events } from 'src/app/shared/events.model';
 import { DatePipe } from '@angular/common';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -59,6 +60,17 @@ export class EventsComponent implements OnInit {
 
           event.endDate = this.datepipe.transform(event.endDate, 'yyyy-MM-dd');
         });
+      },
+      (err) => {
+        console.log(err.error);
+      }
+    );
+  }
+
+  addEventsForm(form: NgForm) {
+    this.eventsService.addEvents(form.value).subscribe(
+      (res) => {
+        console.log('evnt added successfully');
       },
       (err) => {
         console.log(err.error);
