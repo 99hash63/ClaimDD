@@ -28,7 +28,8 @@
     <div>
       <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm">
-          <button type="button" class="btn btn-primary btn" style="color: #fbb335; background-color: #305496;">Add
+          <button type="button" class="btn btn-primary btn" style="color: #fbb335; background-color: #305496;"
+            (click)="open(mymodal)">Add
             Events&nbsp;
             <i i-bs name="plus-circle"></i></button>
         </div>
@@ -58,56 +59,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td style="min-width: 70px;"> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;&nbsp;&nbsp;
-              <i i-bs name="archive-fill" class="delete-icon"></i>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td style="min-width: 70px;"> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;&nbsp;&nbsp;
-              <i i-bs name="archive-fill" class="delete-icon"></i>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let event of eventsList">
+            <td>{{event.eventID}}</td>
+            <td>{{event.description}}</td>
+            <td>{{event.type}}</td>
+            <td>{{event.startDate}}</td>
+            <td>{{event.endDate}}</td>
+            <td>{{event.daysOnCompletion}}</td>
+            <td>{{event.extendedContractDuaration}}</td>
+            <td>{{event.pevAtStart}}</td>
+            <td>{{event.pevAtEnd}}</td>
+            <td>{{event.aevAtStart}}</td>
+            <td>{{event.aevAtEnd}}</td>
+            <td>{{event.costClaimable}}</td>
+            <td>{{event.timeClaimReference}}</td>
             <td style="min-width: 70px;"> <i i-bs name="pencil-square" class="edit-icon"></i>&nbsp;&nbsp;&nbsp;
               <i i-bs name="archive-fill" class="delete-icon"></i>
             </td>
@@ -119,4 +84,98 @@
     </div>
 
   </div>
+
+  <!-- model for add new events -->
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add New Event</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form>
+
+      <div class="modal-body">
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail4">Event ID</label>
+            <input type="text" placeholder="ID" class="form-control" id="inputEmail4">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Event Description</label>
+            <input type="text" placeholder="Description" class="form-control" id="inputPassword4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Event Type</label>
+            <input type="text" placeholder="Type" class="form-control" id="inputEmail4">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Impact Start Date</label>
+            <input type="text" placeholder="Start Date" class="form-control" id="inputPassword4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Impact End Date</label>
+            <input type="text" placeholder="End Date" class="form-control" id="inputEmail4">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Impacted Days on Completion &nbsp; &nbsp; </label>
+            <input type="text" placeholder="Impacted Days" class="form-control" id="inputPassword4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Extended Contract Duration before the event in Days</label>
+            <input type="text" placeholder="Extended Contract Duration" class="form-control" id="inputEmail4">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Planned Earned Value at Start in Currency</label>
+            <input type="text" placeholder="Planned Earned Value" class="form-control" id="inputPassword4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Actual Earned Value at Start in Currency</label>
+            <input type="text" placeholder="Actual Earned Value" class="form-control" id="inputEmail4">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Planned Earned Value at End Currency</label>
+            <input type="text" placeholder="Planned Earned Value" class="form-control" id="inputPassword4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Actual Earned Value at End in Currency</label>
+            <input type="text" placeholder="Actual Earned Value" class="form-control" id="inputEmail4">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Cost Claimable</label>
+            <input type="text" placeholder="Cost Claimable" class="form-control" id="inputPassword4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Time Claim Reference</label>
+            <input type="text" placeholder="Time Claim Reference" class="form-control" id="inputPassword4">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" (click)="modal.close('Save click')">Add Event</button>
+      </div>
+    </form>
+
+  </ng-template>
 </div>

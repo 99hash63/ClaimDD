@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Fp } from './fp.model';
-import { Cp } from './cp.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
