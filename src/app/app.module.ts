@@ -28,6 +28,8 @@ import { UserService } from './shared/user.service';
 import { ClaimantService } from './shared/claimant.service';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -56,12 +58,14 @@ import { FormsModule } from '@angular/forms';
     NgxBootstrapIconsModule.pick(allIcons),
     HttpClientModule,
     FormsModule,
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthGuard,
     // CookieService,
     UserService,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

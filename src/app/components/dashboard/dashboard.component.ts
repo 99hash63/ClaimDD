@@ -5,6 +5,7 @@ import { ProjectService } from 'src/app/shared/project.service';
 import { Project } from 'src/app/shared/project.model';
 import { DefaultDataService } from 'src/app/shared/default-data.service';
 import { DefaultData } from 'src/app/shared/default-data.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -45,7 +46,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public claimantService: ClaimantService,
     public projectService: ProjectService,
-    public defaultDataService: DefaultDataService
+    public defaultDataService: DefaultDataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -180,5 +182,8 @@ export class DashboardComponent implements OnInit {
         } else console.log('no');
       }
     );
+  }
+  next() {
+    this.router.navigateByUrl('contract-particulars');
   }
 }

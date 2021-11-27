@@ -14,8 +14,8 @@
         <button type="button" class="btn btn-secondary" (click)="onTabClick(2)">Contract Amendment</button>
       </div>
 
-      <app-cp-original *ngIf="tabIndex === 0"></app-cp-original>
-      <app-cp-conditions *ngIf="tabIndex === 1"></app-cp-conditions>
+      <app-cp-original (onTabClick)="onTabClick($event)" *ngIf="tabIndex === 0"></app-cp-original>
+      <app-cp-conditions (onTabClick)="onTabClick($event)" *ngIf="tabIndex === 1"></app-cp-conditions>
       <app-cp-amendment *ngIf="tabIndex === 2"></app-cp-amendment>
 
     </div>

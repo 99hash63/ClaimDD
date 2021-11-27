@@ -14,4 +14,8 @@ export class ContractParticularsComponent implements OnInit {
   onTabClick(index: number) {
     this.tabIndex = index;
   }
+
+  parentFun(i: number) {
+    console.log(i);
+  }
 }
