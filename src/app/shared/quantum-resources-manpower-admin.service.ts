@@ -13,12 +13,12 @@ export class QuantumResourcesManpowerAdminService {
   constructor(private http: HttpClient, private router: Router) {}
 
   //function to add Financial particular
-  addQuantumResourcesManpowerAdmin(
-    qrma: QuantumResourcesManpowerAdmin
-  ): Observable<any> {
+  addQuantumResourcesManpowerAdmin(data: any): Observable<any> {
+    console.log('hi');
+    console.log(data);
     return this.http.post(
       environment.apiBaseUrl + '/quantum/resourcesManpowerAdmin',
-      qrma
+      { data: data }
     );
   }
 }

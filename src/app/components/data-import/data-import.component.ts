@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { columns } from 'ngx-bootstrap-icons';
 import * as XLSX from 'xlsx';
 import { QuantumResourcesManpowerAdmin } from '../../shared/quantum-resources-manpower-admin.model';
+import { QuantumResourcesManpowerAdminService } from 'src/app/shared/quantum-resources-manpower-admin.service';
 
 @Component({
   selector: 'app-data-import',
@@ -30,7 +31,9 @@ export class DataImportComponent implements OnInit {
     value: 0,
   };
 
-  constructor() {}
+  constructor(
+    public quantumResourcesManpowerAdminService: QuantumResourcesManpowerAdminService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -62,7 +65,7 @@ export class DataImportComponent implements OnInit {
 
       for (var index in headings) {
         if (index == '2') {
-          console.log(headings[index]);
+          // console.log(headings[index]);
         }
       }
     };
@@ -88,15 +91,15 @@ export class DataImportComponent implements OnInit {
     if (this.dateStartIndex == 0) {
       this.dateStartIndex = index.value;
       this.importStartDate = this.data[0][this.dateStartIndex - 1];
-      console.log(this.importStartDate);
+      // console.log(this.importStartDate);
     } else if (this.dateEndIndex == 0) {
       this.dateEndIndex = index.value;
       this.importEndDate = this.data[0][this.dateEndIndex - 1];
     } else {
       return;
     }
-    console.log('start' + this.dateStartIndex);
-    console.log('end' + this.dateEndIndex);
+    // console.log('start' + this.dateStartIndex);
+    // console.log('end' + this.dateEndIndex);
   }
 
   //reset start and end dates
@@ -111,11 +114,29 @@ export class DataImportComponent implements OnInit {
 
   //data iumport function
   importData() {
-    alert('ammo');
     this.data.forEach((row) => {
       row.forEach((column) => {
-        console.log(column);
+        // console.log(column);
       });
     });
+
+    //call function in service
+    this.quantumResourcesManpowerAdminService
+      .addQuantumResourcesManpowerAdmin(this.data)
+      .subscribe(
+        (res) => {
+          console.log(res['msg']);
+          this.rowIndex = 0;
+          this.columnIndex = 0;
+        },
+        (err) => {
+          console.log(err.error);
+          this.rowIndex = 0;
+          this.columnIndex = 0;
+        }
+      );
+    //restrat interface table
+    this.rowIndex = 0;
+    this.columnIndex = 0;
   }
 }
