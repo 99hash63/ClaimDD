@@ -122,7 +122,11 @@ export class DataImportComponent implements OnInit {
 
     //call function in service
     this.quantumResourcesManpowerAdminService
-      .addQuantumResourcesManpowerAdmin(this.data)
+      .addQuantumResourcesManpowerAdmin(
+        this.data,
+        this.importStartDate,
+        this.importEndDate
+      )
       .subscribe(
         (res) => {
           console.log(res['msg']);
