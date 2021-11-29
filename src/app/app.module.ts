@@ -30,6 +30,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataImportComponent } from './components/data-import/data-import.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CpAmendmentComponent,
     CpConditionsComponent,
     RatePreviewComponent,
+    DataImportComponent,
   ],
   imports: [
     BrowserModule,

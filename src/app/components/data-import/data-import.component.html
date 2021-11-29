@@ -1,0 +1,74 @@
+<div class="main-card card">
+  <div class="white-line">
+  </div>
+  <div class=" main-card-heading">
+    <div style=" display: inline"></div>
+    <h5 class=" card-header">IMPORT</h5>
+  </div>
+  <div class="main-card-body card-body">
+    <!-- body elements -->
+    <input type="file" multiple="false" (change)="onFileChange($event)">
+    <br> <br>
+
+
+    <!-- table -->
+    <div *ngIf="isFileUploaded">
+      <div class="search-table-outter wrapper">
+
+        <br>
+        <table>
+          <tbody>
+            <tr *ngFor="let row of data">
+              {{incrementRowIndex()}}
+              <td *ngFor="let cell of row">
+                <div *ngIf="rowIndex==1 && columnIndex!=0 && columnIndex!=1; else elseBlock">
+                  <input type="number" value="{{columnIndex}}" #placeId hidden>
+                  <button type="submit" style="width: 100%;" (click)=setDateIndex(placeId)>{{cell}}</button>
+                </div>
+                {{incrementColumnIndex()}}
+
+                <!-- <div #elseBlock>
+                {{cell}}
+              </div> -->
+                <ng-template #elseBlock>
+                  <div>{{cell}}</div>
+                </ng-template>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <br>
+      <h6 *ngIf="dateStartIndex==0; else startDate">
+        Please select start date
+      </h6>
+      <ng-template #startDate>
+        <h6>
+          start date: {{importStartDate}}
+        </h6>
+      </ng-template>
+      <h6 *ngIf="dateEndIndex==0; else endDate">
+        Please select end date
+      </h6>
+      <ng-template #endDate>
+        <h6>
+          end date: {{importEndDate}}
+        </h6>
+      </ng-template>
+
+      <!-- reset button -->
+      <div *ngIf="dateStartIndex!=0;">
+        <button type="button" class="btn btn-danger" (click)="resetStartAndEnd()">Reset</button>
+      </div>
+      <br>
+      <!-- start import button -->
+      <div *ngIf="dateStartIndex!=0 && dateEndIndex!=0">
+        <button type="button" class="btn btn-success" (click)="importData()">Import</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
