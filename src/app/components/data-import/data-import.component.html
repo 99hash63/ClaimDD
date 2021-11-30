@@ -45,7 +45,7 @@
 
       <label for="inputEmail4">Select a month to import data</label>
       <div class="form-inline">
-        <select class="form-control" (change)="onSelectedMonthChange($event)">
+        <!-- <select class="form-control" (change)="onSelectedMonthChange($event)">
           <option value="" disabled selected hidden>Month</option>
           <option value='January'>January</option>
           <option value='February'>February</option>
@@ -59,11 +59,16 @@
           <option value='October'>October</option>
           <option value='November'>November</option>
           <option value='December'>December</option>
-        </select>
+        </select> -->
+
+        <input type="month" id="bdaymonth" name="bdaymonth" (change)="onSelectedMonthChange($event)">
+
         <!-- start import button -->
         <div style="margin-left: 20px" *ngIf="importMonth!=0">
           <button type="button" class="btn btn-success" (click)="importData()">Import</button>
         </div>
+
+
       </div>
 
 
