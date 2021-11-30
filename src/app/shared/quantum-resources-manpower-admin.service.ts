@@ -15,8 +15,7 @@ export class QuantumResourcesManpowerAdminService {
   //function to add Financial particular
   addQuantumResourcesManpowerAdmin(
     data: any,
-    importStartDate: any,
-    importEndDate: any
+    importMonth: any
   ): Observable<any> {
     console.log('hi');
     console.log(data);
@@ -24,8 +23,7 @@ export class QuantumResourcesManpowerAdminService {
       environment.apiBaseUrl + '/quantum/resourcesManpowerAdmin',
       {
         data: data,
-        importStartDate: importStartDate,
-        importEndDate: importEndDate,
+        importMonth: importMonth,
       }
     );
   }

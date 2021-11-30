@@ -18,6 +18,8 @@ export class DataImportComponent implements OnInit {
   placeId = 0;
   isFileUploaded = false;
 
+  //import month
+  importMonth = 0;
   //import start date
   importStartDate!: Date;
   //import end date
@@ -111,7 +113,11 @@ export class DataImportComponent implements OnInit {
     this.dateStartIndex = 0;
     this.dateEndIndex = 0;
   }
-
+  //getting users selected month from dropdown
+  onSelectedMonthChange(event: any) {
+    this.importMonth = event.target.value;
+    alert(this.importMonth);
+  }
   //data iumport function
   importData() {
     this.data.forEach((row) => {
@@ -122,11 +128,7 @@ export class DataImportComponent implements OnInit {
 
     //call function in service
     this.quantumResourcesManpowerAdminService
-      .addQuantumResourcesManpowerAdmin(
-        this.data,
-        this.importStartDate,
-        this.importEndDate
-      )
+      .addQuantumResourcesManpowerAdmin(this.data, this.importMonth)
       .subscribe(
         (res) => {
           console.log(res['msg']);

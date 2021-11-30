@@ -41,32 +41,35 @@
 
       </div>
       <br>
-      <h6 *ngIf="dateStartIndex==0; else startDate">
-        Please select start date
-      </h6>
-      <ng-template #startDate>
-        <h6>
-          start date: {{importStartDate}}
-        </h6>
-      </ng-template>
-      <h6 *ngIf="dateEndIndex==0; else endDate">
-        Please select end date
-      </h6>
-      <ng-template #endDate>
-        <h6>
-          end date: {{importEndDate}}
-        </h6>
-      </ng-template>
 
-      <!-- reset button -->
-      <div *ngIf="dateStartIndex!=0;">
-        <button type="button" class="btn btn-danger" (click)="resetStartAndEnd()">Reset</button>
+
+      <label for="inputEmail4">Select a month to import data</label>
+      <div class="form-inline">
+        <select class="form-control" (change)="onSelectedMonthChange($event)">
+          <option value="" disabled selected hidden>Month</option>
+          <option value='January'>January</option>
+          <option value='February'>February</option>
+          <option value='March'>March</option>
+          <option value='April'>April</option>
+          <option value='May'>May</option>
+          <option value='June'>June</option>
+          <option value='July'>July</option>
+          <option value='August'>August</option>
+          <option value='September'>September</option>
+          <option value='October'>October</option>
+          <option value='November'>November</option>
+          <option value='December'>December</option>
+        </select>
+        <!-- start import button -->
+        <div style="margin-left: 20px" *ngIf="importMonth!=0">
+          <button type="button" class="btn btn-success" (click)="importData()">Import</button>
+        </div>
       </div>
-      <br>
-      <!-- start import button -->
-      <div *ngIf="dateStartIndex!=0 && dateEndIndex!=0">
-        <button type="button" class="btn btn-success" (click)="importData()">Import</button>
-      </div>
+
+
+
+
+
 
     </div>
 
