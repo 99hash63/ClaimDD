@@ -130,17 +130,10 @@ export class DataImportComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res['msg']);
-          this.rowIndex = 0;
-          this.columnIndex = 0;
         },
         (err) => {
           console.log(err.error);
-          this.rowIndex = 0;
-          this.columnIndex = 0;
         }
       );
-    //restrat interface table
-    this.rowIndex = 0;
-    this.columnIndex = 0;
   }
 }
