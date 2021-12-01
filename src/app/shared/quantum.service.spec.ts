@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { QuantumResourcesManpowerAdminService } from './quantum-resources-manpower-admin.service';
+import { QuantumResourcesManpowerAdminService } from './quantum.service';
 
 describe('QuantumResourcesManpowerAdminService', () => {
   let service: QuantumResourcesManpowerAdminService;
