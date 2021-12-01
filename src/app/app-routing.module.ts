@@ -12,6 +12,7 @@ import { ReportComponent } from './components/report/report.component';
 import { ContemporaryRecordsComponent } from './components/contemporary-records/contemporary-records.component';
 import { RatePreviewComponent } from './components/rates/rate-preview/rate-preview.component';
 import { AuthGuard } from './auth/auth.guard';
+import { DataImportComponent } from './components/data-import/data-import.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,11 @@ const routes: Routes = [
   {
     path: 'rate-preview',
     component: RatePreviewComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'data-import',
+    component: DataImportComponent,
     pathMatch: 'full',
   },
 ];
