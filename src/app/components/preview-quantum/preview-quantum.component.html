@@ -31,8 +31,8 @@
 
     <div class="search-table-outter wrapper" *ngIf="data">
 
-      <table>
-        <tbody>
+      <table class=" table table-bordered" style="background-color: white;">
+        <thead>
           <th>
             ID
           </th>
@@ -42,6 +42,8 @@
           <th *ngFor="let dateAndValue of dateAndValuesString">
             {{dateAndValue.date}}
           </th>
+        </thead>
+        <tbody>
 
           <tr *ngFor="let row of data">
             <td>
