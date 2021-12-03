@@ -7,7 +7,7 @@
   </div>
   <div class="main-card-body card-body">
     <!-- body elements -->
-    <form>
+    <form *ngIf="!data">
       <div class="form-row">
         <div class="col">
           <label for="">Select Start Date</label>
@@ -21,7 +21,6 @@
       <br>
       <div class="form-row">
         <div class="col" *ngIf="startDate!=''&&endDate!=''">
-          <label for="">Submit</label> <br>
           <button type="submit" class="btn btn-primary form-control" style="width: 30%"
             (click)=previewData()>View</button>
         </div>
@@ -30,32 +29,34 @@
 
     <!-- preview table -->
 
+    <div class="search-table-outter wrapper" *ngIf="data">
 
-    <table>
-      <tbody>
-        <th>
-          ID
-        </th>
-        <th>
-          Resources
-        </th>
-        <th *ngFor="let dateAndValue of dateAndValues">
-          {{dateAndValue.date}}
-        </th>
+      <table>
+        <tbody>
+          <th>
+            ID
+          </th>
+          <th>
+            Resources
+          </th>
+          <th *ngFor="let dateAndValue of dateAndValuesString">
+            {{dateAndValue.date}}
+          </th>
 
-        <tr *ngFor="let row of data">
-          <td>
-            {{row.resourceId}}
-          </td>
-          <td>
-            {{row.resourceName}}
-          </td>
-          <td *ngFor="let dates of row.dateAndValue">
-            {{dates.value}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <tr *ngFor="let row of data">
+            <td>
+              {{row.resourceId}}
+            </td>
+            <td>
+              {{row.resourceName}}
+            </td>
+            <td *ngFor="let dates of row.dateAndValue">
+              {{dates.value}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 </div>

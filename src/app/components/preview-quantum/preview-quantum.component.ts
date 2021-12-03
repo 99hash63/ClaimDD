@@ -33,7 +33,15 @@ export class PreviewQuantumComponent implements OnInit {
   dateAndValues!: [
     {
       _id: string;
-      date: Date;
+      date: any;
+      value: number;
+    }
+  ];
+  //date and values of first element set (converted dates to string)
+  dateAndValuesString!: [
+    {
+      _id: string;
+      date: string;
       value: number;
     }
   ];
@@ -65,6 +73,11 @@ export class PreviewQuantumComponent implements OnInit {
           this.data = res['data'];
 
           this.dateAndValues = res['data'][0].dateAndValue;
+
+          this.dateAndValues.forEach((dateAndValue) => {
+            dateAndValue.date = new Date(dateAndValue.date).toDateString();
+          });
+          this.dateAndValuesString = this.dateAndValues;
           console.log(this.dateAndValues);
         },
         (err) => {

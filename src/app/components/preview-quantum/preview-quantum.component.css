@@ -23,3 +23,11 @@
   background-color: #effbfb;
 }
 /* common style */
+
+.search-table-outter {
+  overflow-x: scroll;
+}
+th,
+td {
+  min-width: 100px;
+}
