@@ -1,0 +1,61 @@
+<div class="main-card card">
+  <div class="white-line">
+  </div>
+  <div class=" main-card-heading">
+    <div style=" display: inline"></div>
+    <h5 class=" card-header">Preview</h5>
+  </div>
+  <div class="main-card-body card-body">
+    <!-- body elements -->
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <label for="">Select Start Date</label>
+          <input type="date" class="form-control" placeholder="First name" (change)="setStartDate($event)">
+        </div>
+        <div class="col">
+          <label for="">Select End Date</label>
+          <input type="date" class="form-control" placeholder="Last name" (change)="setEndDate($event)">
+        </div>
+      </div>
+      <br>
+      <div class="form-row">
+        <div class="col" *ngIf="startDate!=''&&endDate!=''">
+          <label for="">Submit</label> <br>
+          <button type="submit" class="btn btn-primary form-control" style="width: 30%"
+            (click)=previewData()>View</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- preview table -->
+
+
+    <table>
+      <tbody>
+        <th>
+          ID
+        </th>
+        <th>
+          Resources
+        </th>
+        <th *ngFor="let dateAndValue of dateAndValues">
+          {{dateAndValue.date}}
+        </th>
+
+        <tr *ngFor="let row of data">
+          <td>
+            {{row.resourceId}}
+          </td>
+          <td>
+            {{row.resourceName}}
+          </td>
+          <td *ngFor="let dates of row.dateAndValue">
+            {{dates.value}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
