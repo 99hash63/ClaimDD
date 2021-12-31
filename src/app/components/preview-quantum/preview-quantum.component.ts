@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuantumService } from 'src/app/shared/quantum.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-preview-quantum',
@@ -10,6 +12,9 @@ import { QuantumService } from 'src/app/shared/quantum.service';
 export class PreviewQuantumComponent implements OnInit {
   startDate = '';
   endDate = '';
+  resourceId!: string;
+  date: any;
+  value!: string;
 
   //data
   data:
@@ -45,8 +50,13 @@ export class PreviewQuantumComponent implements OnInit {
       value: number;
     }
   ];
+  closeResult: string = '';
 
-  constructor(public quantumService: QuantumService, private router: Router) {}
+  constructor(
+    private modalService: NgbModal,
+    public quantumService: QuantumService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.quantumService.QuantumType == '') {
@@ -79,6 +89,56 @@ export class PreviewQuantumComponent implements OnInit {
           });
           this.dateAndValuesString = this.dateAndValues;
           console.log(this.dateAndValues);
+        },
+        (err) => {
+          console.log(err.error);
+        }
+      );
+  }
+
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  addQuantumForm(form: NgForm) {
+    this.quantumService
+      .addSingleQuantumData(this.resourceId, this.date, this.value)
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err.error);
+        }
+      );
+  }
+
+  deleteQuantumData(resourceId: string) {
+    alert(resourceId);
+    this.quantumService
+      .deleteQuantumData(resourceId, this.startDate, this.endDate)
+      .subscribe(
+        (res) => {
+          console.log(res);
         },
         (err) => {
           console.log(err.error);

@@ -29,6 +29,22 @@ export class QuantumService {
     );
   }
 
+  //function to add single Quantum Resources Manpower Admin
+  addSingleQuantumResourcesManpowerAdmin(
+    resourceId: string,
+    date: any,
+    value: string
+  ): Observable<any> {
+    return this.http.post(
+      environment.apiBaseUrl + '/quantum/resourcesManpowerAdmin/addSingle',
+      {
+        resourceId: resourceId,
+        date: date,
+        value: value,
+      }
+    );
+  }
+
   //function to get Quantum Resources Manpower Admin
   getQuantumResourcesManpowerAdmin(
     startDate: any,
@@ -40,6 +56,18 @@ export class QuantumService {
         startDate: startDate,
         endDate: endDate,
       }
+    );
+  }
+
+  //function to delete Quantum Resources Manpower Admin
+  deleteQuantumResourcesManpowerAdmin(
+    resourceId: string,
+    startDate: any,
+    endDate: any
+  ): Observable<any> {
+    return this.http.post(
+      environment.apiBaseUrl + '/quantum/resourcesManpowerAdmin/delete',
+      { resourceId: resourceId, startDate: startDate, endDate: endDate }
     );
   }
 
@@ -66,5 +94,43 @@ export class QuantumService {
 
   setQuantumType(quantumType: string) {
     this.QuantumType = quantumType;
+  }
+
+  //general function to add single data
+  addSingleQuantumData(
+    resourceId: string,
+    date: any,
+    value: string
+  ): Observable<any> {
+    date = new Date(date).toDateString();
+
+    if (this.QuantumType == 'ResourcesManpowerAdmin') {
+      return this.addSingleQuantumResourcesManpowerAdmin(
+        resourceId,
+        date,
+        value
+      );
+    } else {
+      return this.defaultReturn;
+    }
+  }
+
+  //general function to delete data
+  deleteQuantumData(
+    resourceId: string,
+    startDate: any,
+    endDate: any
+  ): Observable<any> {
+    startDate = new Date(startDate).toDateString();
+    endDate = new Date(endDate).toDateString();
+    if (this.QuantumType == 'ResourcesManpowerAdmin') {
+      return this.deleteQuantumResourcesManpowerAdmin(
+        resourceId,
+        startDate,
+        endDate
+      );
+    } else {
+      return this.defaultReturn;
+    }
   }
 }
