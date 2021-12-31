@@ -13,6 +13,7 @@ import { ContemporaryRecordsComponent } from './components/contemporary-records/
 import { RatePreviewComponent } from './components/rates/rate-preview/rate-preview.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DataImportComponent } from './components/data-import/data-import.component';
+import { PreviewQuantumComponent } from './components/preview-quantum/preview-quantum.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,11 @@ const routes: Routes = [
   {
     path: 'data-import',
     component: DataImportComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'preview-quantum',
+    component: PreviewQuantumComponent,
     pathMatch: 'full',
   },
 ];

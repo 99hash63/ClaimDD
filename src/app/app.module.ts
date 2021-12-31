@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataImportComponent } from './components/data-import/data-import.component';
+import { PreviewQuantumComponent } from './components/preview-quantum/preview-quantum.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { DataImportComponent } from './components/data-import/data-import.compon
     CpConditionsComponent,
     RatePreviewComponent,
     DataImportComponent,
+    PreviewQuantumComponent,
   ],
   imports: [
     BrowserModule,

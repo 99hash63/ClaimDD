@@ -13,6 +13,6 @@ export class QuantumComponent implements OnInit {
 
   //set import type
   setQuantumType(quantumType: string) {
-    this.quantumService.setImportQuantumType(quantumType);
+    this.quantumService.setQuantumType(quantumType);
   }
 }

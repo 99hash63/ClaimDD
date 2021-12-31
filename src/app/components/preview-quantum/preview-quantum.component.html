@@ -1,0 +1,131 @@
+<div class="main-card card">
+  <div class="white-line" style="z-index: 2;">
+  </div>
+  <div class=" main-card-heading" style="z-index: 2;">
+    <div style=" display: inline"></div>
+    <h5 class=" card-header">Preview</h5>
+  </div>
+  <div class="main-card-body card-body">
+    <!-- body elements -->
+
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-sm-8">
+        <button type="button" class="btn btn-primary btn" style="color: #fbb335; background-color: #305496;"
+          (click)="open(mymodal)">Add/Edit
+          &nbsp;
+          <i i-bs name="plus-circle"></i></button>
+      </div>
+
+      <!-- search button -->
+      <div class="col-sm">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+
+
+      <div class="col-sm-1" style="text-align: right;">
+
+        <button type="button" class="btn btn-primary btn" style="color: #305496; background-color: #fbb335;">Export
+        </button>
+      </div>
+    </div>
+
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <label for="">Select Start Date</label>
+          <input type="date" class="form-control" placeholder="First name" (change)="setStartDate($event)">
+        </div>
+        <div class="col">
+          <label for="">Select End Date</label>
+          <input type="date" class="form-control" placeholder="Last name" (change)="setEndDate($event)">
+        </div>
+        <!-- <div class="col" *ngIf="startDate!=''&&endDate!=''"> -->
+        <button type="submit" class="btn btn-primary form-control" style="width: 20%; margin-top: 32px;"
+          (click)=previewData()>View</button>
+        <!-- </div> -->
+      </div>
+      <br>
+
+    </form>
+
+    <!-- preview table -->
+
+    <div class="search-table-outter wrapper" *ngIf="data">
+
+      <table class=" table table-bordered" style="background-color: white;">
+        <thead>
+          <th>
+            ID
+          </th>
+          <th>
+            Resources
+          </th>
+          <th *ngFor="let dateAndValue of dateAndValuesString">
+            {{dateAndValue.date}}
+          </th>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let row of data">
+            <td>
+              {{row.resourceId}}
+            </td>
+            <td>
+              {{row.resourceName}}
+            </td>
+            <td *ngFor="let dates of row.dateAndValue">
+              {{dates.value}}
+            </td>
+            <td>
+              <button (click)=deleteQuantumData(row.resourceId)>Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- model for add new events -->
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add New</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form #quantumForm="ngForm" (ngSubmit)="quantumForm.valid && addQuantumForm(quantumForm)">
+
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="0">Resource ID</label>
+            <input type="text" placeholder="Resource ID" class="form-control" id="resourceId" #eventID="ngModel"
+              [(ngModel)]="resourceId" name="resourceId">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="0">Date</label>
+            <input type="date" placeholder="Date" class="form-control" id="date" #eventID="ngModel" [(ngModel)]="date"
+              name="date">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="0">Value</label>
+            <input type="text" placeholder="Value" class="form-control" id="value" #eventID="ngModel"
+              [(ngModel)]="value" name="value">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" (click)="modal.close('Save click')">Add Data</button>
+      </div>
+    </form>
+
+  </ng-template>
+</div>

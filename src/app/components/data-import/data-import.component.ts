@@ -26,7 +26,7 @@ export class DataImportComponent implements OnInit {
   constructor(public quantumService: QuantumService, private router: Router) {}
 
   ngOnInit(): void {
-    if (this.quantumService.importQuantumType == '') {
+    if (this.quantumService.QuantumType == '') {
       this.router.navigateByUrl('/quantum');
     }
   }
@@ -43,7 +43,7 @@ export class DataImportComponent implements OnInit {
       const wb: XLSX.WorkBook = XLSX.read(bstr, {
         type: 'binary',
         cellDates: true,
-        dateNF: 'dd"."mm"."yyyy',
+        dateNF: 'yyyy.mm.dd',
       });
       const wsname: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
@@ -51,7 +51,7 @@ export class DataImportComponent implements OnInit {
       this.data = XLSX.utils.sheet_to_json(ws, {
         header: 1,
         raw: false,
-        dateNF: 'dd"."mm"."yyyy',
+        dateNF: 'yyyy.mm.dd',
       });
 
       const headings: [] = this.data[0];
